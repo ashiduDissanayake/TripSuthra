@@ -7,6 +7,7 @@ import AboutPage from "@/pages/about";
 import LandingPage from "./pages/landingPage";
 import Destination from "./pages/destination";
 import Admin from "./pages/admin";
+import Services from "./pages/services";
 
 
 
@@ -20,6 +21,7 @@ function App() {
       <Route element={<LandingPage />} path="/landing" />
       <Route element={<Destination />} path="/destination" />
       <Route element={<Admin />} path="/admin" />
+      <Route element={<Services />} path="/services" />
     </Routes>
   );
 }

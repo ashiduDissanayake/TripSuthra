@@ -1,22 +1,17 @@
 import { Button } from "@nextui-org/button";
-import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
 import {
   Navbar as NextUINavbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  NavbarMenuToggle,
-  NavbarMenu,
-  NavbarMenuItem,
 } from "@nextui-org/navbar";
 import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
 import img1 from "@/assets/11.png";
 
-export const Navbar = () => {
+export const Navbar = ({ user }) => {
   return (
     <NextUINavbar
       maxWidth="xl"
@@ -35,7 +30,6 @@ export const Navbar = () => {
           </Link>
         </NavbarBrand>
       </NavbarContent>
-
       {/* Middle Section (Navigation Items) */}
       <NavbarContent className="flex justify-start">
         {siteConfig.navItems.slice(0, 4).map((item) => (
@@ -54,34 +48,47 @@ export const Navbar = () => {
           </NavbarItem>
         ))}
       </NavbarContent>
-
-      {/* End Section (Login & Signup) */}
-
-      <NavbarContent className="flex justify-end" data-justify="end">
-        <NavbarItem>
-          <Link
-            className={clsx(
-              "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ease-in-out",
-              "text-gray-500 hover:text-black",
-              "focus:outline-none focus:text-black"
-            )}
-            href="/login"
-          >
-            Log In
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link
-            className={clsx(
-              "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ease-in-out",
-              "text-white bg-[#087E8B] hover:bg-[#065F65]"
-            )}
-            href="/signup"
-          >
-            Sign Up
-          </Link>
-        </NavbarItem>
-      </NavbarContent>
+      {/* End Section (Avatar or Login & Signup) */}
+      {user ? (
+        <NavbarContent className="flex justify-end items-center">
+          <NavbarItem>
+            <img
+              src={user.avatarUrl}
+              alt="User Avatar"
+              className="w-8 h-8 rounded-full cursor-pointer"
+              onClick={() => {
+                // Handle avatar click, e.g., toggle a dropdown menu
+              }}
+            />
+          </NavbarItem>
+        </NavbarContent>
+      ) : (
+        <NavbarContent className="flex justify-end" data-justify="end">
+          <NavbarItem>
+            <Link
+              className={clsx(
+                "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ease-in-out",
+                "text-gray-500 hover:text-black",
+                "focus:outline-none focus:text-black"
+              )}
+              href="/login"
+            >
+              Log In
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link
+              className={clsx(
+                "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ease-in-out",
+                "text-white bg-[#087E8B] hover:bg-[#065F65]"
+              )}
+              href="/signup"
+            >
+              Sign Up
+            </Link>
+          </NavbarItem>
+        </NavbarContent>
+      )}
     </NextUINavbar>
   );
 };
