@@ -1,14 +1,18 @@
-import { title } from "@/components/primitives";
-import DefaultLayout from "@/layouts/default";
+// pages/DocsPage.js or wherever your DocsPage is located
+import CollapsibleSidebar from '@/components/collapseSidebar';
+import React from 'react';
 
-export default function DocsPage() {
+
+const DocsPage = () => {
   return (
-    <DefaultLayout>
-      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-        <div className="inline-block max-w-lg text-center justify-center">
-          <h1 className={title()}>Docs</h1>
-        </div>
-      </section>
-    </DefaultLayout>
+    <div className="flex">
+      <CollapsibleSidebar />
+      <main className="flex-grow p-4">
+        <h1>Documentation Page</h1>
+        <p>Content for the documentation page.</p>
+      </main>
+    </div>
   );
-}
+};
+
+export default DocsPage;
