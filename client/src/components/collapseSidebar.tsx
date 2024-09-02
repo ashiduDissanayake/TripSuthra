@@ -11,6 +11,9 @@ import { MdMenu as MenuIcon, MdClose as XIcon } from "react-icons/md";
 
 import { Button } from "./ui/button";
 
+import img_l from "../assets/white main.png";
+import img_s from "../assets/short.png";
+
 const CollapsibleSidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -24,31 +27,36 @@ const CollapsibleSidebar = () => {
       {/* Sidebar Content */}
       <div className="flex flex-col w-full h-full">
         <div className="p-4 flex items-center justify-center">
-          <Button onClick={toggleCollapse}>
-            {/* Add your site logo here */}
+          <div
+            onClick={toggleCollapse}
+            className="cursor-pointer flex items-center justify-center bg-gray-800 hover:bg-gray-800 mt-6"
+          >
             <img
-              src="/logo.png"
+              src={isCollapsed ? img_s : img_l}
               alt="Logo"
-              className={`transition-transform ${isCollapsed ? "transform rotate-180" : ""}`}
+              className={`flex ${isCollapsed ? "" : ""}`}
             />
-          </Button>
+          </div>
         </div>
 
         <div className="flex flex-col flex-grow mt-8">
           <a
             href="/dashboard"
-            className={`flex items-center p-4 hover:bg-gray-700 ${isCollapsed ? "justify-center" : ""}`}
+            className={`flex items-center p-4 hover:bg-custom-teal ${isCollapsed ? "justify-center" : ""}`}
           >
-            <DashboardIcon className={`${isCollapsed ? '' : 'mr-4'}`} />
+            <DashboardIcon
+              size={24}
+              className={`${isCollapsed ? "" : "mr-4"}`}
+            />
             <span className={`text-white ${isCollapsed ? "hidden" : "block"}`}>
               Dashboard
             </span>
           </a>
           <a
             href="/users"
-            className={`flex items-center p-4 hover:bg-gray-700 ${isCollapsed ? "justify-center" : ""}`}
+            className={`flex items-center p-4 hover:bg-custom-teal ${isCollapsed ? "justify-center" : ""}`}
           >
-            <UsersIcon className={`${isCollapsed ? '' : 'mr-4'}`} />
+            <UsersIcon size={24} className={`${isCollapsed ? "" : "mr-4"}`} />
             <span className={`text-white ${isCollapsed ? "hidden" : "block"}`}>
               Users
             </span>
@@ -56,27 +64,33 @@ const CollapsibleSidebar = () => {
 
           <a
             href="/settings"
-            className={`flex items-center p-4 hover:bg-gray-700 ${isCollapsed ? "justify-center" : ""}`}
+            className={`flex items-center p-4 hover:bg-custom-teal ${isCollapsed ? "justify-center" : ""}`}
           >
-            <SettingsIcon className={`${isCollapsed ? '' : 'mr-4'}`} />
+            <SettingsIcon
+              size={24}
+              className={`${isCollapsed ? "" : "mr-4"}`}
+            />
             <span className={`text-white ${isCollapsed ? "hidden" : "block"}`}>
               Settings
             </span>
           </a>
           <a
             href="/reports"
-            className={`flex items-center p-4 hover:bg-gray-700 ${isCollapsed ? "justify-center" : ""}`}
+            className={`flex items-center p-4 hover:bg-custom-teal ${isCollapsed ? "justify-center" : ""}`}
           >
-            <ReportsIcon className={`${isCollapsed ? '' : 'mr-4'}`} />
+            <ReportsIcon size={24} className={`${isCollapsed ? "" : "mr-4"}`} />
             <span className={`text-white ${isCollapsed ? "hidden" : "block"}`}>
               Reports
             </span>
           </a>
-          <a
+        </div>
+
+        <div className="flex flex-col flex-grow mt-8">
+        <a
             href="/logout"
-            className={`flex items-center p-4 hover:bg-gray-700 ${isCollapsed ? "justify-center" : ""}`}
+            className={`flex items-center p-4 hover:bg-custom-teal ${isCollapsed ? "justify-center" : ""}`}
           >
-            <LogoutIcon className={`${isCollapsed ? '' : 'mr-4'}`} />
+            <LogoutIcon size={24} className={`${isCollapsed ? "" : "mr-4"}`} />
             <span className={`text-white ${isCollapsed ? "hidden" : "block"}`}>
               Logout
             </span>

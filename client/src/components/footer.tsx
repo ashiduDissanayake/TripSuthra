@@ -5,24 +5,20 @@ import {
   FaInstagram as InstagramIcon,
   FaLinkedinIn as LinkedInIcon,
 } from "react-icons/fa";
-import img1 from "@/assets/11.png";
+import img1 from "@/assets/white main.png";
 
 const Footer = () => {
   return (
     <footer className="bg-teal-700 text-white py-16">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-start gap-8 px-4">
         {/* Logo & Description */}
-        <div className="flex flex-col items-start">
-          <img
-            src={img1}
-            alt="Trip Suthra"
-            className="w-32 mb-4"
-          />
+        <div className="flex flex-col items-center justify-center text-center">
+          <img src={img1} alt="Trip Suthra" className="w-16 mb-4" />
           <p className="text-sm max-w-xs">
             With lots of technology and experienced team we are here front you
             guiding to the wisdom.
           </p>
-          <div className="flex gap-4 mt-4">
+          <div className="flex gap-4 mt-4 justify-center">
             <Link href="https://facebook.com" isExternal>
               <FacebookIcon className="text-white hover:text-gray-300 transition-colors" />
             </Link>
@@ -38,12 +34,12 @@ const Footer = () => {
         {/* Links Section */}
         <div className="flex flex-wrap justify-between w-full md:w-auto gap-8">
           <div>
-            <h4 className="text-lg font-semibold mb-4">Company</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">Company</h4>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/about-us"
-                  className="text-sm hover:text-gray-300 transition-colors"
+                  className="text-sm text-white hover:text-gray-400 transition-colors duration-300"
                 >
                   About us
                 </Link>
@@ -51,7 +47,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/contact-us"
-                  className="text-sm hover:text-gray-300 transition-colors"
+                  className="text-sm text-white hover:text-gray-400 transition-colors duration-300"
                 >
                   Contact us
                 </Link>
@@ -59,7 +55,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/faqs"
-                  className="text-sm hover:text-gray-300 transition-colors"
+                  className="text-sm text-white hover:text-gray-400 transition-colors duration-300"
                 >
                   FAQ’s
                 </Link>
@@ -67,7 +63,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/news"
-                  className="text-sm hover:text-gray-300 transition-colors"
+                  className="text-sm text-white hover:text-gray-400 transition-colors duration-300"
                 >
                   News
                 </Link>
@@ -76,12 +72,12 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Product</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">Product</h4>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/traveller-ai"
-                  className="text-sm hover:text-gray-300 transition-colors"
+                  className="text-sm text-white hover:text-gray-400 transition-colors duration-300"
                 >
                   Traveller.ai
                 </Link>
@@ -89,7 +85,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/book-me"
-                  className="text-sm hover:text-gray-300 transition-colors"
+                  className="text-sm text-white hover:text-gray-400 transition-colors duration-300"
                 >
                   Book Me
                 </Link>
@@ -97,7 +93,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/hire-me"
-                  className="text-sm hover:text-gray-300 transition-colors"
+                  className="text-sm text-white hover:text-gray-400 transition-colors duration-300"
                 >
                   Hire Me
                 </Link>
@@ -106,12 +102,12 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Services</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">Services</h4>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/personalising"
-                  className="text-sm hover:text-gray-300 transition-colors"
+                  className="text-sm text-white hover:text-gray-400 transition-colors duration-300"
                 >
                   Personalising
                 </Link>
@@ -119,7 +115,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/accommodation"
-                  className="text-sm hover:text-gray-300 transition-colors"
+                  className="text-sm text-white hover:text-gray-400 transition-colors duration-300"
                 >
                   Accommodation
                 </Link>
@@ -127,7 +123,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/food"
-                  className="text-sm hover:text-gray-300 transition-colors"
+                  className="text-sm text-white hover:text-gray-400 transition-colors duration-300"
                 >
                   Food
                 </Link>
@@ -135,7 +131,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/guides"
-                  className="text-sm hover:text-gray-300 transition-colors"
+                  className="text-sm text-white hover:text-gray-400 transition-colors duration-300"
                 >
                   Guides
                 </Link>
@@ -144,12 +140,12 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Legal</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">Legal</h4>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/privacy-policy"
-                  className="text-sm hover:text-gray-300 transition-colors"
+                  className="text-sm text-white hover:text-gray-400 transition-colors duration-300"
                 >
                   Privacy Policy
                 </Link>
@@ -157,7 +153,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/terms-conditions"
-                  className="text-sm hover:text-gray-300 transition-colors"
+                  className="text-sm text-white hover:text-gray-400 transition-colors duration-300"
                 >
                   Terms & Conditions
                 </Link>
@@ -165,7 +161,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/return-policy"
-                  className="text-sm hover:text-gray-300 transition-colors"
+                  className="text-sm text-white hover:text-gray-400 transition-colors duration-300"
                 >
                   Return Policy
                 </Link>

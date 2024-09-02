@@ -74,7 +74,7 @@ export const Navbar = () => {
           <Link
             className={clsx(
               "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ease-in-out",
-              "text-white bg-primary hover:bg-primary-dark"
+              "text-white bg-[#087E8B] hover:bg-[#065F65]"
             )}
             href="/signup"
           >
