@@ -86,41 +86,78 @@ const PersonalDetailsForm = () => {
 
 export default PersonalDetailsForm;
 */
-
-import React from 'react';
+import React from "react";
 
 const PersonalDetailsForm = () => {
   return (
-    <div className="p-5">
+    <div className="max-h-screen overflow-y-auto p-5 bg-white shadow-lg rounded-lg">
       <h2 className="text-2xl font-bold mb-6">Personal Details</h2>
-      
+
       <form>
-        <div className="flex justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Left Column */}
-          <div className="w-1/2 pr-2">
+          <div>
             <div className="mb-4">
-              <label htmlFor="firstName" className="block font-semibold mb-2">First Name</label>
-              <input type="text" id="firstName" name="firstName" className="w-full p-2 border border-gray-300 rounded-md" placeholder='First Name'/>
+              <label htmlFor="firstName" className="block font-semibold mb-2">
+                First Name
+              </label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"
+                placeholder="First Name"
+              />
             </div>
 
             <div className="mb-4">
-              <label htmlFor="lastName" className="block font-semibold mb-2">Last Name</label>
-              <input type="text" id="lastName" name="lastName" className="w-full p-2 border border-gray-300 rounded-md" placeholder='Last Name'/>
+              <label htmlFor="lastName" className="block font-semibold mb-2">
+                Last Name
+              </label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"
+                placeholder="Last Name"
+              />
             </div>
 
             <div className="mb-4">
-              <label htmlFor="email" className="block font-semibold mb-2">Email</label>
-              <input type="email" id="email" name="email" className="w-full p-2 border border-gray-300 rounded-md" placeholder='Email Address'/>
+              <label htmlFor="email" className="block font-semibold mb-2">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"
+                placeholder="Email Address"
+              />
             </div>
 
             <div className="mb-4">
-              <label htmlFor="passportNumber" className="block font-semibold mb-2">Passport Number</label>
-              <input type="text" id="passportNumber" name="passportNumber" className="w-full p-2 border border-gray-300 rounded-md" placeholder='Passport Number'/>
+              <label htmlFor="passportNumber" className="block font-semibold mb-2">
+                Passport Number
+              </label>
+              <input
+                type="text"
+                id="passportNumber"
+                name="passportNumber"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"
+                placeholder="Passport Number"
+              />
             </div>
 
             <div className="mb-4">
-              <label htmlFor="countryOfResidence" className="block font-semibold mb-2">Country of Residence</label>
-              <select id="countryOfResidence" name="countryOfResidence" className="w-full p-2 border border-gray-300 rounded-md">
+              <label htmlFor="countryOfResidence" className="block font-semibold mb-2">
+                Country of Residence
+              </label>
+              <select
+                id="countryOfResidence"
+                name="countryOfResidence"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"
+              >
                 <option value="canada">Canada</option>
                 <option value="usa">United States</option>
                 <option value="other">Other</option>
@@ -128,21 +165,43 @@ const PersonalDetailsForm = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="address" className="block font-semibold mb-2">Address (Street Address, City, State/Province, Postal Code)</label>
-              <input type="text" id="address" name="address" className="w-full p-2 border border-gray-300 rounded-md" placeholder='Street Address, City, State/Province, Postal Code'/>
+              <label htmlFor="address" className="block font-semibold mb-2">
+                Address (Street Address, City, State/Province, Postal Code)
+              </label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"
+                placeholder="Street Address, City, State/Province, Postal Code"
+              />
             </div>
           </div>
 
           {/* Right Column */}
-          <div className="w-1/2 pl-2">
+          <div>
             <div className="mb-4">
-              <label htmlFor="placeOfBirth" className="block font-semibold mb-2">Place of Birth</label>
-              <input type="text" id="placeOfBirth" name="placeOfBirth" className="w-full p-2 border border-gray-300 rounded-md" placeholder='Birth Place'/>
+              <label htmlFor="placeOfBirth" className="block font-semibold mb-2">
+                Place of Birth
+              </label>
+              <input
+                type="text"
+                id="placeOfBirth"
+                name="placeOfBirth"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"
+                placeholder="Birth Place"
+              />
             </div>
 
             <div className="mb-4">
-              <label htmlFor="gender" className="block font-semibold mb-2">Gender</label>
-              <select id="gender" name="gender" className="w-full p-2 border border-gray-300 rounded-md">
+              <label htmlFor="gender" className="block font-semibold mb-2">
+                Gender
+              </label>
+              <select
+                id="gender"
+                name="gender"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"
+              >
                 <option value="female">Female</option>
                 <option value="male">Male</option>
                 <option value="other">Other</option>
@@ -150,20 +209,45 @@ const PersonalDetailsForm = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="nationality" className="block font-semibold mb-2">Nationality</label>
-              <input type="text" id="nationality" name="nationality" className="w-full p-2 border border-gray-300 rounded-md" placeholder='Nationality'/>
+              <label htmlFor="nationality" className="block font-semibold mb-2">
+                Nationality
+              </label>
+              <input
+                type="text"
+                id="nationality"
+                name="nationality"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"
+                placeholder="Nationality"
+              />
             </div>
 
             <div className="mb-4">
-              <label htmlFor="passportIssueDate" className="block font-semibold mb-2">Passport Issue Date</label>
-              <input type="date" id="passportIssueDate" name="passportIssueDate" className="w-full p-2 border border-gray-300 rounded-md" />
+              <label htmlFor="passportIssueDate" className="block font-semibold mb-2">
+                Passport Issue Date
+              </label>
+              <input
+                type="date"
+                id="passportIssueDate"
+                name="passportIssueDate"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"
+              />
             </div>
 
             <div className="mb-4">
-              <label htmlFor="passportExpiryDate" className="block font-semibold mb-2">Passport Expiry Date</label>
-              <input type="date" id="passportExpiryDate" name="passportExpiryDate" className="w-full p-2 border border-gray-300 rounded-md" />
+              <label htmlFor="passportExpiryDate" className="block font-semibold mb-2">
+                Passport Expiry Date
+              </label>
+              <input
+                type="date"
+                id="passportExpiryDate"
+                name="passportExpiryDate"
+                className="w-full p-3 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500"
+              />
             </div>
-            <button type="submit" className="bg-teal-500 text-white py-2 px-4 rounded-md hover:bg-teal-600 mx-auto block mt-5">
+            <button
+              type="submit"
+              className="bg-teal-500 text-white py-2 px-4 rounded-md hover:bg-teal-800 transition-colors duration-300 mx-auto block mt-12"
+            >
               Save Changes
             </button>
           </div>
