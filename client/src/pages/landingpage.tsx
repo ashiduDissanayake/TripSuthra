@@ -11,7 +11,6 @@ const LandingPage = () => {
 
     <HeroSection />
     <TrendingEvents />
-    <TouristFeedback />
     <TrendingDestinations />
     </div>
     
