@@ -9,10 +9,19 @@ const searchBarContainer: CSSProperties = {
   alignItems: 'center',
   padding: '10px',
   backgroundColor: '#fff',
+<<<<<<< Updated upstream
   borderRadius: '30px',
   boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
   width: '1229px',
   height: '70px',
+=======
+  borderRadius: '44px',
+  boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+  position: 'relative',
+  top: '5px',
+  width: '1219px',
+  height: '90px',
+>>>>>>> Stashed changes
 };
 
 // Styles for each section of the search bar
@@ -22,7 +31,10 @@ const searchBarSection: CSSProperties = {
   padding: '10px',
   borderRight: '1px solid #e2e2e2',
   flex: 1,
+<<<<<<< Updated upstream
   
+=======
+>>>>>>> Stashed changes
 };
 
 const lastSection: CSSProperties = {
@@ -51,7 +63,10 @@ const searchButtonStyles: CSSProperties = {
   width: '40px',
   height: '40px',
   cursor: 'pointer',
+<<<<<<< Updated upstream
   
+=======
+>>>>>>> Stashed changes
 };
 
 const HeroSearchBar: React.FC = () => {

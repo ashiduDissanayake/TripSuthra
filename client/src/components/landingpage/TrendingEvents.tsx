@@ -47,8 +47,13 @@ const eventCardStyles: CSSProperties = {
 const eventImageContainerStyles: CSSProperties = {
   position: 'relative',
   width: '100%',
+<<<<<<< Updated upstream
   overflow: 'hidden',
   height: '250px',
+=======
+  height: '250px',
+  overflow: 'hidden',
+>>>>>>> Stashed changes
 };
 
 const eventImageStyles: CSSProperties = {
@@ -69,7 +74,13 @@ const buttonBaseStyles: CSSProperties = {
   borderRadius: '15px',
   cursor: 'pointer',
   fontWeight: 'bold',
+<<<<<<< Updated upstream
   transition: 'background-color 0.3s ease, transform 0.3s ease', // Smooth transition for hover effect
+=======
+  transition: 'background-color 0.3s ease, transform 0.3s ease',
+  height: '55px',
+  width: '139px', // Smooth transition for hover effect
+>>>>>>> Stashed changes
 };
 
 const buttonHoverStyles: CSSProperties = {
@@ -117,50 +128,90 @@ const TrendingEvents: React.FC = () => {
     {
       title: 'Nallur Festival',
       date: 'October 5, 2024',
+<<<<<<< Updated upstream
       location: 'Galle',
       imageUrl: '/public/nallur.jpg',
       reviews: 320,
       distance: '90 Kilometers away',
+=======
+      location: 'Jaffna',
+      imageUrl: '/public/nallur.jpg',
+      reviews: 350,
+      distance: '540 Kilometers away',
+>>>>>>> Stashed changes
     },
     {
       title: 'Madhu Festival',
       date: 'August 12, 2024',
+<<<<<<< Updated upstream
       location: 'Kandy',
       imageUrl: '/public/madhu.jfif',
       reviews: 480,
       distance: '187 Kilometers away',
+=======
+      location: 'Chilaw',
+      imageUrl: '/public/madhu.jfif',
+      reviews: 180,
+      distance: '530 Kilometers away',
+>>>>>>> Stashed changes
     },
     {
       title: 'Arugam Bay Surfing',
       date: 'October 5, 2024',
       location: 'Galle',
       imageUrl: '/public/arugambay.jfif',
+<<<<<<< Updated upstream
       reviews: 320,
       distance: '90 Kilometers away',
+=======
+      reviews: 10,
+      distance: '356 Kilometers away',
+>>>>>>> Stashed changes
     },
     {
       title: 'Katharagama Perahera',
       date: 'August 12, 2024',
+<<<<<<< Updated upstream
       location: 'Kandy',
       imageUrl: '/public/katharagama.jfif',
       reviews: 480,
       distance: '187 Kilometers away',
+=======
+      location: 'Kathragama',
+      imageUrl: '/public/katharagama.jfif',
+      reviews: 200,
+      distance: '250 Kilometers away',
+>>>>>>> Stashed changes
     },
     {
       title: 'SLARDAR Racing',
       date: 'August 12, 2024',
+<<<<<<< Updated upstream
       location: 'Kandy',
       imageUrl: '/public/car.jfif',
       reviews: 480,
       distance: '187 Kilometers away',
+=======
+      location: 'Diyathlawa',
+      imageUrl: '/public/car.jfif',
+      reviews: 150,
+      distance: '365 Kilometers away',
+>>>>>>> Stashed changes
     },
     {
       title: 'The Tuk Tuk Tournament',
       date: 'October 5, 2024',
+<<<<<<< Updated upstream
       location: 'Galle',
       imageUrl: '/public/threewheel.jfif',
       reviews: 320,
       distance: '90 Kilometers away',
+=======
+      location: 'Colombo',
+      imageUrl: '/public/threewheel.jfif',
+      reviews: 320,
+      distance: '78 Kilometers away',
+>>>>>>> Stashed changes
     },
   ];
 

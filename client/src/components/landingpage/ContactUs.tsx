@@ -32,11 +32,19 @@ const iconStyles: CSSProperties = {
 
 const titleStyles: CSSProperties = {
   fontWeight: 'bold',
+<<<<<<< Updated upstream
   color: '#087E8B',
 };
 
 const textStyles: CSSProperties = {
   color: '#087E8B',
+=======
+  color: '#00695c',
+};
+
+const textStyles: CSSProperties = {
+  color: '#6c757d',
+>>>>>>> Stashed changes
 };
 
 // Contact Us component

@@ -43,7 +43,11 @@ const buttonStyles: CSSProperties = {
   padding: '10px 20px',
   fontSize: '16px',
   color: '#fff',
+<<<<<<< Updated upstream
   backgroundColor: '#087E8B',
+=======
+  backgroundColor: '#007bff',
+>>>>>>> Stashed changes
   border: 'none',
   borderRadius: '5px',
   cursor: 'pointer',
