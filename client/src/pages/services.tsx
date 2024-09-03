@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import DefaultLayout from '../layouts/default';
 import serviceImage from '../assets/service.jpg';
 import { Slider } from "@nextui-org/react";
+import Chatbot from '@/components/chatbot';
 
 export default function Services() {
   const [location, setLocation] = useState('');
@@ -186,6 +187,7 @@ export default function Services() {
                     <p className="text-gray-600">
                       Selected Budget: Rs. {budget[0].toLocaleString()} - Rs. {budget[1].toLocaleString()}
                     </p>
+                    <Chatbot />
                   </div>
                 </div>
               </div>

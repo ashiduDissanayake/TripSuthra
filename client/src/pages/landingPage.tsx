@@ -1,17 +1,21 @@
-import DefaultLayout from '@/layouts/default'
-import { title } from "@/components/primitives";
+import HeroSection from '@/components/landingpage/herosection'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import React from 'react'
-import Hero from '@/components/landingpage/hero';
+import TouristFeedback from '@/components/landingpage/TouristFeedback';
+import TrendingEvents from '@/components/landingpage/TrendingEvents';
+import TrendingDestinations from '@/components/landingpage/TrendingDestinations';
 
 const LandingPage = () => {
   return (
-    <DefaultLayout>
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <div className="inline-block max-w-lg text-center justify-center">
-        <Hero />
-      </div>
-    </section>
-  </DefaultLayout>
+    <div>
+
+    <HeroSection />
+    <TrendingEvents />
+    <TouristFeedback />
+    <TrendingDestinations />
+    </div>
+    
   )
 }
 
