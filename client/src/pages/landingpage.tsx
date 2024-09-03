@@ -1,21 +1,30 @@
-import HeroSection from '@/components/landingpage/herosection'
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import DefaultLayout from '@/layouts/default'
+import { title } from "@/components/primitives";
 import React from 'react'
-import TouristFeedback from '@/components/landingpage/TouristFeedback';
+import Hero from '@/components/landingpage/hero';
+import HeroSection from '@/components/landingpage/herosection';
 import TrendingEvents from '@/components/landingpage/TrendingEvents';
+import TouristFeedback from '@/components/landingpage/TouristFeedback';
 import TrendingDestinations from '@/components/landingpage/TrendingDestinations';
+import Services from './services';
+import ContactUs from '@/components/landingpage/ContactUs';
+import GetInTouch from '@/components/landingpage/GetInTouch';
+import ServicesCard from '@/components/landingpage/ServicesCard';
 
 const LandingPage = () => {
   return (
-    <div>
-
+    <DefaultLayout>
+   
     <HeroSection />
+    <ServicesCard />
     <TrendingEvents />
     <TouristFeedback />
     <TrendingDestinations />
-    </div>
-    
+    <ContactUs />
+    <GetInTouch />
+
+
+  </DefaultLayout>
   )
 }
 

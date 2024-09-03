@@ -9,6 +9,9 @@ import Destination from "./pages/destination";
 import Admin from "./pages/admin";
 import Services from "./pages/services";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 function App() {
   return (
     <Routes>
