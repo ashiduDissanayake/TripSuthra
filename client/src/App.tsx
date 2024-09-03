@@ -8,6 +8,7 @@ import LandingPage from "./pages/landingPage";
 import Destination from "./pages/destination";
 import Admin from "./pages/admin";
 import Services from "./pages/services";
+import News from "./pages/news";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route element={<LandingPage />} path="/landing" />
       <Route element={<Destination />} path="/destination" />
       <Route element={<Admin />} path="/admin" />
+      <Route element={<News />} path="/news" />
     </Routes>
   );
 }
