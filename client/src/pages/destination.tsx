@@ -1,13 +1,13 @@
-import "./style.css";
-// Adjust the path to where your Image component is located
+import Hero from '@/components/destination/hero'
+import React from 'react'
 
 const Destination = () => {
   return (
     <div>
-      <Image />
-      destinatioD
+    <Hero />
     </div>
-  );
-};
+    
+  )
+}
 
-export default Destination;
+export default Destination
