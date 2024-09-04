@@ -8,6 +8,7 @@ const containerStyles: CSSProperties = {
   alignItems: 'center',
   justifyContent: 'space-between',
   padding: '30px',
+  margin: '0,0,0,10px',
   borderRadius: '10px',
   backgroundColor: '#f8f9fa',
   boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
