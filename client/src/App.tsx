@@ -10,6 +10,7 @@ import LogIn from "./pages/login";
 import Admin from "./pages/admin";
 import Services from "./pages/services";
 import News from "./pages/news";
+import Events from "./components/landingpage/events";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <Route element={<Admin />} path="/admin" />
       <Route element={<Services />} path="/services" />
       <Route element={<News />} path="/news" />
+      <Route element={<Events />} path="/test" />
     </Routes>
   );
 }
