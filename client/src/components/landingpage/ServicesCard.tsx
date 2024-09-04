@@ -1,30 +1,31 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Corrected for react-router-dom v6 and above
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CSSProperties } from 'react';
 
-// Define styles for the component
 const containerStyles: CSSProperties = {
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'space-between',
+  justifyContent: 'center',
   padding: '30px',
-  margin: '0,0,0,10px',
+  margin: '0 auto', // Center the container horizontally
   borderRadius: '10px',
   backgroundColor: '#f8f9fa',
   boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+  maxWidth: '1200px', // Add a maximum width to the container
 };
 
 const textContainerStyles: CSSProperties = {
   flex: 1,
+  marginRight: '40px', // Add some spacing between the text and options
 };
 
 const servicesTextStyles: CSSProperties = {
   fontWeight: 'bold',
-  fontSize: '22px',
+  fontSize: '40px',
 };
 
 const descriptionStyles: CSSProperties = {
-  fontSize: '16px',
+  fontSize: '20px',
   marginTop: '10px',
 };
 
@@ -32,7 +33,7 @@ const optionsContainerStyles: CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   gap: '20px',
-  marginLeft: '30px',
+  flex: 1, // Make the options container take up the remaining space
 };
 
 const optionStyles: CSSProperties = {
@@ -44,11 +45,13 @@ const optionStyles: CSSProperties = {
   cursor: 'pointer',
   transition: 'all 0.3s ease',
   backgroundColor: '#fff',
+  transform: 'scale(1)',
 };
 
 const optionHoverStyles: CSSProperties = {
   boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)',
   backgroundColor: '#eaf5f3',
+  transform: 'scale(1.05)',
 };
 
 const iconStyles: CSSProperties = {
@@ -62,11 +65,10 @@ const titleStyles: CSSProperties = {
   color: '#00695c',
 };
 
-// Services component
 const ServicesCard: React.FC = () => {
-  const navigate = useNavigate(); // Updated hook for navigation
+  const navigate = useNavigate();
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  // Define options data
   const options = [
     {
       title: 'Plan with Traveller.ai',
@@ -90,7 +92,15 @@ const ServicesCard: React.FC = () => {
   ];
 
   const handleClick = (link: string) => {
-    navigate(link); // Updated to use navigate
+    navigate(link);
+  };
+
+  const handleMouseEnter = (index: number) => {
+    setHoveredIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredIndex(null);
   };
 
   return (
@@ -103,14 +113,13 @@ const ServicesCard: React.FC = () => {
         {options.map((option, index) => (
           <div
             key={index}
-            style={{ ...optionStyles }}
+            style={{
+              ...optionStyles,
+              ...((index === hoveredIndex) ? optionHoverStyles : {}),
+            }}
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={handleMouseLeave}
             onClick={() => handleClick(option.link)}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = '#eaf5f3')
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = '#fff')
-            }
           >
             <span style={iconStyles}>{option.icon}</span>
             <div>

@@ -12,6 +12,7 @@ import News from "./pages/news";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import EventDetailModal from "./components/landingpage/EventDetailModal";
 
 function App() {
   return (
