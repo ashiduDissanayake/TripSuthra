@@ -16,11 +16,10 @@ import "slick-carousel/slick/slick-theme.css";
 function App() {
   return (
     <Routes>
-      <Route element={<IndexPage />} path="/" />
       <Route element={<PricingPage />} path="/pricing" />
       <Route element={<BlogPage />} path="/blog" />
       <Route element={<AboutPage />} path="/about" />
-      <Route element={<LandingPage />} path="/landing" />
+      <Route element={<LandingPage />} path="/" />
       <Route element={<Destination />} path="/destination" />
       <Route element={<Admin />} path="/admin" />
       <Route element={<News />} path="/news" />
