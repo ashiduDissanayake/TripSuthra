@@ -1,5 +1,6 @@
 import React from 'react';
 import { CSSProperties } from 'react';
+import Slider from 'react-slick';
 
 // Define the type for the feedback data
 interface FeedbackData {
