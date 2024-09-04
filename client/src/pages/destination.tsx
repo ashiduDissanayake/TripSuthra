@@ -1,13 +1,23 @@
-import Hero from '@/components/destination/hero'
-import React from 'react'
+import React from 'react';
+import Hero from '@/components/destination/hero';
+import Trendingdestination from '@/components/destination/trendingdestinations';
+import DestinationCategory from '@/components/destination/destinationcategory';
+import Explore from '@/components/destination/explore';
+import App from '@/components/destination/appdownload';
+import TopStories from '@/components/destination/topstories';
 
-const Destination = () => {
+
+const Destination = (): JSX.Element => {
   return (
     <div>
-    <Hero />
+      <Hero />
+      <Trendingdestination />
+      <DestinationCategory />
+      <Explore />
+      <App />
+      <TopStories />
     </div>
-    
-  )
+  );
 }
 
-export default Destination
+export default Destination;

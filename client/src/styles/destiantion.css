@@ -1,15 +1,16 @@
 .image {
-  height: 881px;
-  width: 1729px;
-}
+    height: 881px;
+    width: 1729px;
+  }
+  
+  .image .weligama-beach-best {
+    display: block;
+    height: 881px;
+    left: 0;
+    object-fit: cover;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    width: 1728px;
+  }
 
-.image .weligama-beach-best {
-  display: block;
-  height: 881px;
-  left: 0;
-  object-fit: cover;
-  opacity: 0;
-  position: fixed;
-  top: 0;
-  width: 1728px;
-}
