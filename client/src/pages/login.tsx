@@ -9,7 +9,7 @@ const LogIn = () => {
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            justify-content: end;
             align-items: center;
             height: 100vh;
             width: 100vw;

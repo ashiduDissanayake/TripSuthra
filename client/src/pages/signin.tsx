@@ -6,10 +6,10 @@ const SignIn = () => {
         <style>{`
         body {
             font-family: "Poppins-ExtraBold", Helvetica;;
-            margin: 0;
+            margin: ;
             padding: 0;
             display: flex;
-            justify-content: center;
+            justify-content: end;
             align-items: center;
             height: 100vh;
             width: 100vw;
