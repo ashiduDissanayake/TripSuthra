@@ -1,5 +1,6 @@
 import React, { useRef, useState, MouseEvent } from 'react';
 import { CSSProperties } from 'react';
+import EventDetailModal from './EventDetailModal'; // Adjust the import path as necessary
 
 // Define the type for the event data
 interface EventData {
@@ -9,6 +10,8 @@ interface EventData {
   imageUrl: string;
   reviews: number;
   distance: string;
+  description: string;
+  rating: number;
 }
 
 // Styles for the container and event cards
@@ -34,10 +37,11 @@ const scrollContainerStyles: CSSProperties = {
   padding: '20px 0',
   scrollSnapType: 'x mandatory',
   WebkitOverflowScrolling: 'touch',
-  touchAction: 'none', // Disables default touch actions
+  touchAction: 'none',
 };
 
 const eventCardStyles: CSSProperties = {
+  position: 'relative',
   minWidth: '250px',
   backgroundColor: '#ffffff',
   borderRadius: '15px',
@@ -45,6 +49,13 @@ const eventCardStyles: CSSProperties = {
   textAlign: 'center',
   overflow: 'hidden',
   scrollSnapAlign: 'start',
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+};
+
+// Popup hover effect
+const eventCardHoverStyles: CSSProperties = {
+  transform: 'scale(1.05)',
+  boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
 };
 
 const eventImageContainerStyles: CSSProperties = {
@@ -72,13 +83,14 @@ const buttonBaseStyles: CSSProperties = {
   borderRadius: '15px',
   cursor: 'pointer',
   fontWeight: 'bold',
-  transition: 'background-color 0.3s ease, transform 0.3s ease', // Smooth transition for hover effect
+  display: 'none',
+  transition: 'background-color 0.3s ease, transform 0.3s ease',
 };
 
 const buttonHoverStyles: CSSProperties = {
   backgroundColor: 'white',
-  color: '#087E8B', // Darker shade of the button color
-  transform: 'translateX(-50%) scale(1.05)', // Slight scale effect
+  color: '#087E8B',
+  transform: 'translateX(-50%) scale(1.05)',
 };
 
 const eventInfoStyles: CSSProperties = {
@@ -107,6 +119,16 @@ const distanceStyles: CSSProperties = {
   marginTop: '5px',
 };
 
+// Styles for the favorite icon (top-right corner)
+const favoriteIconStyles: CSSProperties = {
+  position: 'absolute',
+  top: '15px',
+  right: '15px',
+  cursor: 'pointer',
+  fontSize: '24px',
+  color: '#ff6347',
+};
+
 const TrendingEvents: React.FC = () => {
   const eventsData: EventData[] = [
     {
@@ -116,6 +138,8 @@ const TrendingEvents: React.FC = () => {
       imageUrl: '/public/esala.jpg',
       reviews: 480,
       distance: '187 Kilometers away',
+      description: 'Esala Perahera is an annual Buddhist festival held in Kandy, Sri Lanka, to honor the sacred tooth relic of Lord Buddha. It is one of the most colorful and significant religious events in the country, featuring a grand procession with beautifully adorned elephants, traditional dancers, drummers, and fire performers. The highlight of the festival is the majestic elephant carrying a replica of the sacred tooth relic through the streets. The event usually lasts for ten days in July or August, symbolizing devotion and showcasing Sri Lankan culture and heritage.',
+      rating: 4.5,
     },
     {
       title: 'Nallur Festival',
@@ -124,6 +148,8 @@ const TrendingEvents: React.FC = () => {
       imageUrl: '/public/nallur.jpg',
       reviews: 320,
       distance: '90 Kilometers away',
+      description: 'The Nallur Festival, held annually in Jaffna, Sri Lanka, is a vibrant and significant Hindu celebration dedicated to Lord Murugan, a popular deity in Tamil culture. This festival, also known as the Nallur Kandaswamy Kovil Festival, typically takes place over 25 days in August or September. It features a blend of religious rituals, cultural performances, and colorful processions.Devotees participate in various ceremonies, including elaborate processions with decorated chariots, traditional music, and dance. The festival\'s highlight is the grand procession of the deity\'s chariot through the streets, accompanied by enthusiastic devotees, who often undertake vows and penances as part of their devotion. The Nallur Festival is a time of community bonding, showcasing Tamil cultural heritage and religious fervor.',
+      rating: 3.0,
     },
     {
       title: 'Madhu Festival',
@@ -132,6 +158,8 @@ const TrendingEvents: React.FC = () => {
       imageUrl: '/public/madhu.jfif',
       reviews: 480,
       distance: '187 Kilometers away',
+      description: 'A vibrant Hindu festival in Galle.',
+      rating: 4.0,
     },
     {
       title: 'Arugam Bay Surfing',
@@ -140,6 +168,8 @@ const TrendingEvents: React.FC = () => {
       imageUrl: '/public/arugambay.jfif',
       reviews: 320,
       distance: '90 Kilometers away',
+      description: 'A vibrant Hindu festival in Galle.',
+      rating: 4.0,
     },
     {
       title: 'Katharagama Perahera',
@@ -148,6 +178,8 @@ const TrendingEvents: React.FC = () => {
       imageUrl: '/public/katharagama.jfif',
       reviews: 480,
       distance: '187 Kilometers away',
+      description: 'A vibrant Hindu festival in Galle.',
+      rating: 4.0,
     },
     {
       title: 'SLARDAR Racing',
@@ -156,6 +188,8 @@ const TrendingEvents: React.FC = () => {
       imageUrl: '/public/car.jfif',
       reviews: 480,
       distance: '187 Kilometers away',
+      description: 'A vibrant Hindu festival in Galle.',
+      rating: 4.0,
     },
     {
       title: 'The Tuk Tuk Tournament',
@@ -164,14 +198,20 @@ const TrendingEvents: React.FC = () => {
       imageUrl: '/public/threewheel.jfif',
       reviews: 320,
       distance: '90 Kilometers away',
+      description: 'A vibrant Hindu festival in Galle.',
+      rating: 4.0,
     },
+
   ];
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [favoriteIndexes, setFavoriteIndexes] = useState<number[]>([]);
 
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     if (scrollContainerRef.current) {
@@ -197,8 +237,22 @@ const TrendingEvents: React.FC = () => {
     }
   };
 
-  const handleViewMapClick = (location: string) => {
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`, '_blank');
+  const openModal = (event: EventData) => {
+    setSelectedEvent(event);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedEvent(null);
+  };
+
+  const toggleFavorite = (index: number) => {
+    setFavoriteIndexes((prevFavorites) =>
+      prevFavorites.includes(index)
+        ? prevFavorites.filter((favIndex) => favIndex !== index)
+        : [...prevFavorites, index]
+    );
   };
 
   return (
@@ -213,20 +267,33 @@ const TrendingEvents: React.FC = () => {
         onMouseLeave={handleMouseLeave}
       >
         {eventsData.map((event, index) => (
-          <div key={index} style={eventCardStyles}>
+          <div
+            key={index}
+            style={{
+              ...eventCardStyles,
+              ...(hoveredIndex === index ? eventCardHoverStyles : {}),
+            }}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
             <div style={eventImageContainerStyles}>
               <img src={event.imageUrl} alt={event.title} style={eventImageStyles} />
               <button
                 style={{
                   ...buttonBaseStyles,
+                  display: hoveredIndex === index ? 'block' : 'none',
                   ...(hoveredIndex === index ? buttonHoverStyles : {}),
                 }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() => handleViewMapClick(event.location)}
+                onClick={() => openModal(event)}
               >
-                View In Map
+                View Details
               </button>
+            </div>
+            <div
+              style={favoriteIconStyles}
+              onClick={() => toggleFavorite(index)}
+            >
+              {favoriteIndexes.includes(index) ? '❤️' : '🤍'}
             </div>
             <div style={eventInfoStyles}>
               <div style={eventTitleStyles}>{event.title}</div>
@@ -243,6 +310,13 @@ const TrendingEvents: React.FC = () => {
           </div>
         ))}
       </div>
+      {selectedEvent && (
+        <EventDetailModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          event={selectedEvent}
+        />
+      )}
     </section>
   );
 };
