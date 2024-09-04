@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.17.1",
     "@hookform/resolvers": "^3.9.0",
     "@nextui-org/button": "2.0.37",
     "@nextui-org/card": "^2.0.33",
@@ -57,6 +58,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
+    "dotenv": "^16.4.5",
     "embla-carousel-react": "^8.2.0",
     "framer-motion": "~11.1.1",
     "input-otp": "^1.2.4",
@@ -81,6 +83,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/node": "^22.5.2",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "@types/react-slick": "^0.23.13",

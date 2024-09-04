@@ -1,15 +1,17 @@
 import React, { CSSProperties } from 'react';
+import HeroSearchBar from './HeroSearchBar'; // Import the Airbnb-like search bar
 
 // Inline styles typed correctly
 const heroStyles: CSSProperties = {
   height: '100vh',
-  backgroundImage: "url('/public/hero-bg.jpg')",
+  backgroundImage: "url('/public/hero-bg-1.jpg')",
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  flexDirection: 'column', // Added this to stack the content vertically
 };
 
 const heroContentStyles: CSSProperties = {
@@ -18,51 +20,19 @@ const heroContentStyles: CSSProperties = {
 };
 
 const headingStyles: CSSProperties = {
-  fontSize: '3rem',
+  fontSize: '3.5rem',
   marginBottom: '20px',
+  marginTop: '300px',
+  fontFamily: '"Expletus Sans", sans-serif',
 };
-
-const inputStyles: CSSProperties = {
-  padding: '10px',
-  marginRight: '10px',
-  border: 'none',
-  borderRadius: '5px',
-  width: '300px',
-};
-
-const buttonStyles: CSSProperties = {
-  padding: '10px 20px',
-  backgroundColor: '#007bff',
-  color: 'white',
-  border: 'none',
-  borderRadius: '5px',
-  cursor: 'pointer',
-};
-
-const buttonHoverColor: string = '#0056b3'; // Hover color as string
 
 function HeroSection() {
-  const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.currentTarget.style.backgroundColor = buttonHoverColor;
-  };
-
-  const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.currentTarget.style.backgroundColor = buttonStyles.backgroundColor as string; // Ensure it's a string
-  };
-
   return (
     <section style={heroStyles}>
       <div style={heroContentStyles}>
-        <h1 style={headingStyles}>Travel further. Travel longer. Travel deeper.</h1>
-        <input type="text" placeholder="Search your next destination..." style={inputStyles} />
-        <button
-        
-          style={buttonStyles}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          Search
-        </button>
+        <h1 style={headingStyles}>Travel further. Travel longer.<br></br> Travel deeper.</h1>
+        {/* Replace the old input and button with the HeroSearchBar */}
+        <HeroSearchBar />
       </div>
     </section>
   );
