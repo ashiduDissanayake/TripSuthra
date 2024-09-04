@@ -1,45 +1,48 @@
 const express = require('express');
-const {
-  GoogleGenerativeAI,
-} = require("@google/generative-ai");
-
-const apiKey = process.env.VITE_REACT_APP_GEMINI_API_KEY;
-const genAI = new GoogleGenerativeAI(apiKey);
-const model = genAI.getGenerativeModel({
-  model: "gemini-1.5-flash",
-});
+const cors = require('cors');
+const mysql = require('mysql2');
 
 const app = express();
+const PORT = 3000;
 
+// Enable CORS for all routes
+app.use(cors());
+
+// Middleware to parse JSON bodies
 app.use(express.json());
 
-app.post('/generate-itinerary', async (req, res) => {
-  const { startLocation, endLocation, days, travelers, budget, description } = req.body;
-  const parts = [
-    { text: `input: Start Location` },
-    { text: `input 2: ${startLocation}` },
-    { text: `input: Destination` },
-    { text: `input 2: ${endLocation}` },
-    { text: `input 3: ${days}` },
-    { text: `input 4: ${travelers}` },
-    { text: `input 5: ${budget}` },
-    { text: `input 6: ${description}` },
-    { text: `output: Activities for Day 1.` },
-  ];
-
-  try {
-    const result = await model.generateContent({
-      contents: [{ role: "user", parts }],
-      generationConfig,
-    });
-
-    res.json({ itinerary: result.response.text() });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Failed to generate itinerary.' });
-  }
+// MySQL Database Connection
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '12345678',
+  database: 'tripSuthra',
 });
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+db.connect((err) => {
+  if (err) {
+    console.error('Error connecting to the database:', err);
+    return;
+  }
+  console.log('Connected to the MySQL database.');
+});
+
+// Route to get all events with detailed information
+app.get('/events', (req, res) => {
+  const sql = `
+    SELECT name AS eventName, image AS imageUrl from events inner join 
+
+  `;
+
+  db.query(sql, (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Failed to fetch events' });
+    }
+    res.json(results);
+  });
+});
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
