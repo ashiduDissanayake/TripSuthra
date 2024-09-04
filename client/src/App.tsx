@@ -14,6 +14,7 @@ import Events from "./components/landingpage/events";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import EventDetailModal from "./components/landingpage/EventDetailModal";
+import SignIn from "./pages/signin";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route element={<Services />} path="/services" />
       <Route element={<News />} path="/news" />
       <Route element={<Events />} path="/test" />
+      <Route element={<SignIn />} path="/signin" />
     </Routes>
   );
 }
