@@ -1,5 +1,4 @@
 import React from 'react';
-import Slider from 'react-slick';
 import { CSSProperties } from 'react';
 
 // Define the type for the feedback data
