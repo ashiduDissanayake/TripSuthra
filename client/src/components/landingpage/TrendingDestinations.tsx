@@ -20,8 +20,11 @@ const sectionStyles: CSSProperties = {
 
 const titleStyles: CSSProperties = {
   marginBottom: '30px',
-  fontSize: '24px',
+  fontSize: '32px',
   fontWeight: 'bold',
+  fontFamily: '"Expletus Sans", sans-serif',
+  textAlign: 'left',
+  paddingLeft: '30px',
 };
 
 const scrollContainerStyles: CSSProperties = {
@@ -47,13 +50,8 @@ const eventCardStyles: CSSProperties = {
 const eventImageContainerStyles: CSSProperties = {
   position: 'relative',
   width: '100%',
-<<<<<<< Updated upstream
   overflow: 'hidden',
   height: '250px',
-=======
-  height: '150px',
-  overflow: 'hidden',
->>>>>>> Stashed changes
 };
 
 const eventImageStyles: CSSProperties = {
@@ -67,31 +65,19 @@ const buttonBaseStyles: CSSProperties = {
   bottom: '10px',
   left: '50%',
   transform: 'translateX(-50%)',
-<<<<<<< Updated upstream
   padding: '10px',
   backgroundColor: '#087E8B',
   color: 'white',
   border: 'none',
   borderRadius: '15px',
-=======
-  padding: '10px 20px',
-  backgroundColor: '#00a699',
-  color: 'white',
-  border: 'none',
-  borderRadius: '5px',
->>>>>>> Stashed changes
   cursor: 'pointer',
   fontWeight: 'bold',
   transition: 'background-color 0.3s ease, transform 0.3s ease', // Smooth transition for hover effect
 };
 
 const buttonHoverStyles: CSSProperties = {
-<<<<<<< Updated upstream
   backgroundColor: 'white',
   color: '#087E8B', // Darker shade of the button color
-=======
-  backgroundColor: '#008c8c', // Darker shade of the button color
->>>>>>> Stashed changes
   transform: 'translateX(-50%) scale(1.05)', // Slight scale effect
 };
 
@@ -124,97 +110,54 @@ const distanceStyles: CSSProperties = {
 const TrendingDestinations: React.FC = () => {
   const eventsData: EventData[] = [
     {
-<<<<<<< Updated upstream
       title: 'Ella',
       date: 'August 12, 2024',
       location: 'Kandy',
       imageUrl: '/public/ella.jpg',
-=======
-      title: 'Esala Perahera',
-      date: 'August 12, 2024',
-      location: 'Kandy',
-      imageUrl: '/public/esala.jpg',
->>>>>>> Stashed changes
       reviews: 480,
       distance: '187 Kilometers away',
     },
     {
-<<<<<<< Updated upstream
       title: 'Hikkaduwa',
       date: 'October 5, 2024',
       location: 'Galle',
       imageUrl: '/public/hikkaduwa.jpg',
-=======
-      title: 'Nallur Festival',
-      date: 'October 5, 2024',
-      location: 'Galle',
-      imageUrl: '/public/nallur.jpg',
->>>>>>> Stashed changes
       reviews: 320,
       distance: '90 Kilometers away',
     },
     {
-<<<<<<< Updated upstream
       title: 'Yala National Park',
       date: 'August 12, 2024',
       location: 'Kandy',
       imageUrl: '/public/yala.jfif',
-=======
-      title: 'Madhu Festival',
-      date: 'August 12, 2024',
-      location: 'Kandy',
-      imageUrl: '/public/madhu.jfif',
->>>>>>> Stashed changes
       reviews: 480,
       distance: '187 Kilometers away',
     },
     {
-<<<<<<< Updated upstream
       title: 'Temple of the Tooth Relic',
       date: 'October 5, 2024',
       location: 'Galle',
       imageUrl: '/public/daladamaligawa.jfif',
-=======
-      title: 'Arugam Bay Surfing',
-      date: 'October 5, 2024',
-      location: 'Galle',
-      imageUrl: '/public/arugambay.jfif',
->>>>>>> Stashed changes
       reviews: 320,
       distance: '90 Kilometers away',
     },
     {
-<<<<<<< Updated upstream
       title: 'Galle',
       date: 'August 12, 2024',
       location: 'Kandy',
       imageUrl: '/public/galle.jpg',
-=======
-      title: 'Katharagama Perahera',
-      date: 'August 12, 2024',
-      location: 'Kandy',
-      imageUrl: '/public/katharagama.jfif',
->>>>>>> Stashed changes
       reviews: 480,
       distance: '187 Kilometers away',
     },
     {
-<<<<<<< Updated upstream
       title: 'Colombo',
       date: 'August 12, 2024',
       location: 'Kandy',
       imageUrl: '/public/colombo.jpg',
-=======
-      title: 'SLARDAR Racing',
-      date: 'August 12, 2024',
-      location: 'Kandy',
-      imageUrl: '/public/car.jfif',
->>>>>>> Stashed changes
       reviews: 480,
       distance: '187 Kilometers away',
     },
     {
-<<<<<<< Updated upstream
       title: 'Polonnaruwa',
       date: 'October 5, 2024',
       location: 'Galle',
@@ -227,12 +170,6 @@ const TrendingDestinations: React.FC = () => {
       date: 'October 5, 2024',
       location: 'Galle',
       imageUrl: '/public/nuwaraeliya.jpg',
-=======
-      title: 'The Tuk Tuk Tournament',
-      date: 'October 5, 2024',
-      location: 'Galle',
-      imageUrl: '/public/threewheel.jfif',
->>>>>>> Stashed changes
       reviews: 320,
       distance: '90 Kilometers away',
     },
@@ -274,11 +211,7 @@ const TrendingDestinations: React.FC = () => {
 
   return (
     <section style={sectionStyles}>
-<<<<<<< Updated upstream
       <h2 style={titleStyles}>Trending Destinations In Sri Lanka</h2>
-=======
-      <h2 style={titleStyles}>Trending Events In Sri Lanka</h2>
->>>>>>> Stashed changes
       <div
         ref={scrollContainerRef}
         style={scrollContainerStyles}
@@ -298,11 +231,6 @@ const TrendingDestinations: React.FC = () => {
                 }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-<<<<<<< Updated upstream
-=======
-                onMouseDown={(e) => (e.currentTarget.style.transform = 'translateX(-50%) scale(0.95)')}
-                onMouseUp={(e) => (e.currentTarget.style.transform = 'translateX(-50%) scale(1)')}
->>>>>>> Stashed changes
                 onClick={() => handleViewMapClick(event.location)}
               >
                 View In Map
@@ -312,13 +240,10 @@ const TrendingDestinations: React.FC = () => {
               <div style={eventTitleStyles}>{event.title}</div>
               <div style={reviewStyles}>
                 <span style={starStyles}>★</span>
-<<<<<<< Updated upstream
                 <span style={starStyles}>★</span>
                 <span style={starStyles}>★</span>
                 <span style={starStyles}>★</span>
                 <span style={starStyles}>☆</span>
-=======
->>>>>>> Stashed changes
                 {event.reviews} Reviews
               </div>
               <div style={distanceStyles}>{event.distance}</div>

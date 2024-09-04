@@ -11,6 +11,7 @@ const headingStyles: CSSProperties = {
   fontSize: '30px',
   fontWeight: 'bold',
   marginBottom: '30px',
+  fontFamily: '"Expletus Sans", sans-serif',
 };
 
 const formStyles: CSSProperties = {
@@ -43,11 +44,7 @@ const buttonStyles: CSSProperties = {
   padding: '10px 20px',
   fontSize: '16px',
   color: '#fff',
-<<<<<<< Updated upstream
   backgroundColor: '#087E8B',
-=======
-  backgroundColor: '#007bff',
->>>>>>> Stashed changes
   border: 'none',
   borderRadius: '5px',
   cursor: 'pointer',

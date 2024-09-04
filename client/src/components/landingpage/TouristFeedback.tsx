@@ -55,23 +55,24 @@ const touristImageContainerStyles: CSSProperties = {
 };
 
 const touristImageStyles: CSSProperties = {
-  width: '80px',
-  height: '80px',
+  width: '100px',
+  height: '100px',
   borderRadius: '50%',
 };
 
 const nameStyles: CSSProperties = {
   fontWeight: 'bold',
-  marginBottom: '10px',
+  marginBottom: '26px',
 };
 
 const locationStyles: CSSProperties = {
   color: '#6c757d',
-  marginBottom: '15px',
+  marginBottom: '18px',
 };
 
 const feedbackTextStyles: CSSProperties = {
   fontStyle: 'italic',
+  fontSize: '18px'
 };
 
 const TouristFeedback: React.FC = () => {
@@ -110,7 +111,7 @@ const TouristFeedback: React.FC = () => {
     <div style={feedbackSectionStyles}>
       <div style={overlayStyles}></div>
       <div style={contentStyles}>
-        <h2 style={{ marginBottom: '30px' }}>Tourist Feedback</h2>
+        <h2 style={{ marginBottom: '30px' , fontSize : '36px', fontFamily: '"Expletus Sans", sans-serif',}}>Tourist Feedback</h2>
         <Slider {...settings}>
           {feedbackData.map((tourist, index) => (
             <div key={index}>

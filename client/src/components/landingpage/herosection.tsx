@@ -20,15 +20,17 @@ const heroContentStyles: CSSProperties = {
 };
 
 const headingStyles: CSSProperties = {
-  fontSize: '3rem',
+  fontSize: '3.5rem',
   marginBottom: '20px',
+  marginTop: '300px',
+  fontFamily: '"Expletus Sans", sans-serif',
 };
 
 function HeroSection() {
   return (
     <section style={heroStyles}>
       <div style={heroContentStyles}>
-        <h1 style={headingStyles}>Travel further. Travel longer. Travel deeper.</h1>
+        <h1 style={headingStyles}>Travel further. Travel longer.<br></br> Travel deeper.</h1>
         {/* Replace the old input and button with the HeroSearchBar */}
         <HeroSearchBar />
       </div>
