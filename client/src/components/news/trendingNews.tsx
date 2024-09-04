@@ -5,6 +5,7 @@ import {
   Link,
   Image
 } from "@nextui-org/react";
+import image from "@/assets/news.png";
 
 export default function trendingNews({
   title,
@@ -15,7 +16,7 @@ export default function trendingNews({
   author,
 }) {
   return (
-    <Card className="max-w-[500px]">
+    <Card className="max-w-[650px]">
       <CardHeader className="flex gap-3">
         <Link href={url}>
           <Image
@@ -23,7 +24,7 @@ export default function trendingNews({
             height={100}
             width={150}
             radius="sm"
-            src={src}
+            src={src?src:image}
           />
         </Link>
         <div className="flex flex-col">
