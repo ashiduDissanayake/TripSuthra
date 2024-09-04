@@ -34,10 +34,11 @@ const scrollContainerStyles: CSSProperties = {
   padding: '20px 0',
   scrollSnapType: 'x mandatory',
   WebkitOverflowScrolling: 'touch',
-  touchAction: 'none', // Disables default touch actions
+  touchAction: 'none',
 };
 
 const eventCardStyles: CSSProperties = {
+  position: 'relative',
   minWidth: '250px',
   backgroundColor: '#ffffff',
   borderRadius: '15px',
@@ -45,6 +46,13 @@ const eventCardStyles: CSSProperties = {
   textAlign: 'center',
   overflow: 'hidden',
   scrollSnapAlign: 'start',
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease', // Smooth transitions
+};
+
+// Popup hover effect
+const eventCardHoverStyles: CSSProperties = {
+  transform: 'scale(1.05)', // Slightly enlarges the card
+  boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)', // Adds a stronger shadow
 };
 
 const eventImageContainerStyles: CSSProperties = {
@@ -72,13 +80,14 @@ const buttonBaseStyles: CSSProperties = {
   borderRadius: '15px',
   cursor: 'pointer',
   fontWeight: 'bold',
-  transition: 'background-color 0.3s ease, transform 0.3s ease', // Smooth transition for hover effect
+  display: 'none', // Initially hidden
+  transition: 'background-color 0.3s ease, transform 0.3s ease',
 };
 
 const buttonHoverStyles: CSSProperties = {
   backgroundColor: 'white',
-  color: '#087E8B', // Darker shade of the button color
-  transform: 'translateX(-50%) scale(1.05)', // Slight scale effect
+  color: '#087E8B',
+  transform: 'translateX(-50%) scale(1.05)',
 };
 
 const eventInfoStyles: CSSProperties = {
@@ -107,8 +116,19 @@ const distanceStyles: CSSProperties = {
   marginTop: '5px',
 };
 
+// Styles for the favorite icon (top-right corner)
+const favoriteIconStyles: CSSProperties = {
+  position: 'absolute',
+  top: '15px',
+  right: '15px',
+  cursor: 'pointer',
+  fontSize: '24px',
+  color: '#ff6347', // Initially set color
+};
+
 const TrendingEvents: React.FC = () => {
   const eventsData: EventData[] = [
+    // Your events data
     {
       title: 'Esala Perahera',
       date: 'August 12, 2024',
@@ -172,6 +192,7 @@ const TrendingEvents: React.FC = () => {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [favoriteIndexes, setFavoriteIndexes] = useState<number[]>([]);
 
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     if (scrollContainerRef.current) {
@@ -201,6 +222,14 @@ const TrendingEvents: React.FC = () => {
     window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`, '_blank');
   };
 
+  const toggleFavorite = (index: number) => {
+    setFavoriteIndexes((prevFavorites) =>
+      prevFavorites.includes(index)
+        ? prevFavorites.filter((favIndex) => favIndex !== index)
+        : [...prevFavorites, index]
+    );
+  };
+
   return (
     <section style={sectionStyles}>
       <h2 style={titleStyles}>Trending Events In Sri Lanka</h2>
@@ -213,20 +242,33 @@ const TrendingEvents: React.FC = () => {
         onMouseLeave={handleMouseLeave}
       >
         {eventsData.map((event, index) => (
-          <div key={index} style={eventCardStyles}>
+          <div
+            key={index}
+            style={{
+              ...eventCardStyles,
+              ...(hoveredIndex === index ? eventCardHoverStyles : {}), // Apply popup effect on hover
+            }}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
             <div style={eventImageContainerStyles}>
               <img src={event.imageUrl} alt={event.title} style={eventImageStyles} />
               <button
                 style={{
                   ...buttonBaseStyles,
+                  display: hoveredIndex === index ? 'block' : 'none', // Show button on hover
                   ...(hoveredIndex === index ? buttonHoverStyles : {}),
                 }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => handleViewMapClick(event.location)}
               >
                 View In Map
               </button>
+            </div>
+            <div
+              style={favoriteIconStyles}
+              onClick={() => toggleFavorite(index)}
+            >
+              {favoriteIndexes.includes(index) ? '❤️' : '🤍'}
             </div>
             <div style={eventInfoStyles}>
               <div style={eventTitleStyles}>{event.title}</div>
