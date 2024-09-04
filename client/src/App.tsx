@@ -6,6 +6,7 @@ import PricingPage from "@/pages/pricing";
 import BlogPage from "@/pages/blog";
 import AboutPage from "@/pages/about";
 import Destination from "./pages/destination";
+import LogIn from "./pages/login";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Route element={<BlogPage />} path="/blog" />
       <Route element={<AboutPage />} path="/about" />
       <Route element={<Destination />} path="/destination" />
+      <Route element={<LogIn />} path="/login" />
     </Routes>
   );
 }
