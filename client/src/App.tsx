@@ -25,6 +25,7 @@ function App() {
       <Route element={<Destination />} path="/destination" />
       <Route element={<LogIn />} path="/login" />
       <Route element={<Admin />} path="/admin" />
+      <Route element={<Services />} path="/services" />
       <Route element={<News />} path="/news" />
     </Routes>
   );
