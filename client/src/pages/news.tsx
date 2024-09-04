@@ -21,9 +21,7 @@ export default function News() {
 
   return (
     <>
-      <div className="mb-4">
-        <Navbar />
-      </div>
+      <Navbar />
       <div className="mb-4">
         {mainNews && (
           <LatestNews

@@ -1,5 +1,6 @@
 import React, { useRef, useState, MouseEvent } from 'react';
 import { CSSProperties } from 'react';
+import EventDetailModal from './EventDetailModal'; // Adjust the import path as necessary
 
 // Define the type for the event data
 interface EventData {
@@ -9,6 +10,8 @@ interface EventData {
   imageUrl: string;
   reviews: number;
   distance: string;
+  description: string;
+  rating: number;
 }
 
 // Styles for the container and event cards
@@ -46,13 +49,13 @@ const eventCardStyles: CSSProperties = {
   textAlign: 'center',
   overflow: 'hidden',
   scrollSnapAlign: 'start',
-  transition: 'transform 0.3s ease, box-shadow 0.3s ease', // Smooth transitions
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
 };
 
 // Popup hover effect
 const eventCardHoverStyles: CSSProperties = {
-  transform: 'scale(1.05)', // Slightly enlarges the card
-  boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)', // Adds a stronger shadow
+  transform: 'scale(1.05)',
+  boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
 };
 
 const eventImageContainerStyles: CSSProperties = {
@@ -80,7 +83,7 @@ const buttonBaseStyles: CSSProperties = {
   borderRadius: '15px',
   cursor: 'pointer',
   fontWeight: 'bold',
-  display: 'none', // Initially hidden
+  display: 'none',
   transition: 'background-color 0.3s ease, transform 0.3s ease',
 };
 
@@ -123,12 +126,11 @@ const favoriteIconStyles: CSSProperties = {
   right: '15px',
   cursor: 'pointer',
   fontSize: '24px',
-  color: '#ff6347', // Initially set color
+  color: '#ff6347',
 };
 
 const TrendingDestinations: React.FC = () => {
   const eventsData: EventData[] = [
-    // Your events data
     {
       title: 'Ella',
       date: 'August 12, 2024',
@@ -136,7 +138,10 @@ const TrendingDestinations: React.FC = () => {
       imageUrl: '/public/ella.jpg',
       reviews: 480,
       distance: '187 Kilometers away',
+      description: 'Ella is a picturesque town in Sri Lanka\'s Uva Province, known for its stunning natural beauty and lush landscapes. Nestled in the hill country, Ella is famous for its scenic views, including the Ella Rock, Little Adam\'s Peak, and the Ravana Falls. The town is a popular destination for nature lovers and adventure seekers, offering opportunities for hiking, trekking, and exploring tea plantations. Ella also boasts a cool, pleasant climate, making it a refreshing retreat from the tropical heat of the lowlands. Its charming atmosphere and serene surroundings make it a favorite spot for relaxation and exploration.',
+      rating: 3.0,
     },
+
     {
       title: 'Hikkaduwa',
       date: 'October 5, 2024',
@@ -144,6 +149,8 @@ const TrendingDestinations: React.FC = () => {
       imageUrl: '/public/hikkaduwa.jpg',
       reviews: 320,
       distance: '90 Kilometers away',
+      description: 'Hikkaduwa is a vibrant coastal town located on the southwestern coast of Sri Lanka, known for its beautiful beaches and lively atmosphere. It\'s renowned for its clear turquoise waters, coral reefs, and excellent opportunities for snorkeling and diving. Hikkaduwa Beach is a popular destination for both locals and tourists, offering a range of water sports and beach activities. The town also has a bustling nightlife with numerous restaurants, bars, and shops. In addition to its beach attractions, Hikkaduwa is home to the Hikkaduwa Coral Sanctuary, where visitors can explore diverse marine life and vibrant coral formations.',
+      rating: 3.0,
     },
     {
       title: 'Yala National Park',
@@ -152,6 +159,8 @@ const TrendingDestinations: React.FC = () => {
       imageUrl: '/public/yala.jfif',
       reviews: 480,
       distance: '187 Kilometers away',
+      description: 'The Nallur Festival, held annually in Jaffna, Sri Lanka, is a vibrant and significant Hindu celebration dedicated to Lord Murugan, a popular deity in Tamil culture. This festival, also known as the Nallur Kandaswamy Kovil Festival, typically takes place over 25 days in August or September. It features a blend of religious rituals, cultural performances, and colorful processions.Devotees participate in various ceremonies, including elaborate processions with decorated chariots, traditional music, and dance. The festival\'s highlight is the grand procession of the deity\'s chariot through the streets, accompanied by enthusiastic devotees, who often undertake vows and penances as part of their devotion. The Nallur Festival is a time of community bonding, showcasing Tamil cultural heritage and religious fervor.',
+      rating: 3.0,
     },
     {
       title: 'Temple of the Tooth Relic',
@@ -160,6 +169,8 @@ const TrendingDestinations: React.FC = () => {
       imageUrl: '/public/daladamaligawa.jfif',
       reviews: 320,
       distance: '90 Kilometers away',
+      description: 'The Nallur Festival, held annually in Jaffna, Sri Lanka, is a vibrant and significant Hindu celebration dedicated to Lord Murugan, a popular deity in Tamil culture. This festival, also known as the Nallur Kandaswamy Kovil Festival, typically takes place over 25 days in August or September. It features a blend of religious rituals, cultural performances, and colorful processions.Devotees participate in various ceremonies, including elaborate processions with decorated chariots, traditional music, and dance. The festival\'s highlight is the grand procession of the deity\'s chariot through the streets, accompanied by enthusiastic devotees, who often undertake vows and penances as part of their devotion. The Nallur Festival is a time of community bonding, showcasing Tamil cultural heritage and religious fervor.',
+      rating: 3.0,
     },
     {
       title: 'Galle',
@@ -168,6 +179,8 @@ const TrendingDestinations: React.FC = () => {
       imageUrl: '/public/galle.jpg',
       reviews: 480,
       distance: '187 Kilometers away',
+      description: 'The Nallur Festival, held annually in Jaffna, Sri Lanka, is a vibrant and significant Hindu celebration dedicated to Lord Murugan, a popular deity in Tamil culture. This festival, also known as the Nallur Kandaswamy Kovil Festival, typically takes place over 25 days in August or September. It features a blend of religious rituals, cultural performances, and colorful processions.Devotees participate in various ceremonies, including elaborate processions with decorated chariots, traditional music, and dance. The festival\'s highlight is the grand procession of the deity\'s chariot through the streets, accompanied by enthusiastic devotees, who often undertake vows and penances as part of their devotion. The Nallur Festival is a time of community bonding, showcasing Tamil cultural heritage and religious fervor.',
+      rating: 3.0,
     },
     {
       title: 'Colombo',
@@ -176,6 +189,8 @@ const TrendingDestinations: React.FC = () => {
       imageUrl: '/public/colombo.jpg',
       reviews: 480,
       distance: '187 Kilometers away',
+      description: 'The Nallur Festival, held annually in Jaffna, Sri Lanka, is a vibrant and significant Hindu celebration dedicated to Lord Murugan, a popular deity in Tamil culture. This festival, also known as the Nallur Kandaswamy Kovil Festival, typically takes place over 25 days in August or September. It features a blend of religious rituals, cultural performances, and colorful processions.Devotees participate in various ceremonies, including elaborate processions with decorated chariots, traditional music, and dance. The festival\'s highlight is the grand procession of the deity\'s chariot through the streets, accompanied by enthusiastic devotees, who often undertake vows and penances as part of their devotion. The Nallur Festival is a time of community bonding, showcasing Tamil cultural heritage and religious fervor.',
+      rating: 3.0,
     },
     {
       title: 'Polonnaruwa',
@@ -184,6 +199,8 @@ const TrendingDestinations: React.FC = () => {
       imageUrl: '/public/polonnaruwa.jfif',
       reviews: 320,
       distance: '90 Kilometers away',
+      description: 'The Nallur Festival, held annually in Jaffna, Sri Lanka, is a vibrant and significant Hindu celebration dedicated to Lord Murugan, a popular deity in Tamil culture. This festival, also known as the Nallur Kandaswamy Kovil Festival, typically takes place over 25 days in August or September. It features a blend of religious rituals, cultural performances, and colorful processions.Devotees participate in various ceremonies, including elaborate processions with decorated chariots, traditional music, and dance. The festival\'s highlight is the grand procession of the deity\'s chariot through the streets, accompanied by enthusiastic devotees, who often undertake vows and penances as part of their devotion. The Nallur Festival is a time of community bonding, showcasing Tamil cultural heritage and religious fervor.',
+      rating: 3.0,
     },
     {
       title: 'Nuwara Eliya',
@@ -192,9 +209,14 @@ const TrendingDestinations: React.FC = () => {
       imageUrl: '/public/nuwaraeliya.jpg',
       reviews: 320,
       distance: '90 Kilometers away',
+      description: 'The Nallur Festival, held annually in Jaffna, Sri Lanka, is a vibrant and significant Hindu celebration dedicated to Lord Murugan, a popular deity in Tamil culture. This festival, also known as the Nallur Kandaswamy Kovil Festival, typically takes place over 25 days in August or September. It features a blend of religious rituals, cultural performances, and colorful processions.Devotees participate in various ceremonies, including elaborate processions with decorated chariots, traditional music, and dance. The festival\'s highlight is the grand procession of the deity\'s chariot through the streets, accompanied by enthusiastic devotees, who often undertake vows and penances as part of their devotion. The Nallur Festival is a time of community bonding, showcasing Tamil cultural heritage and religious fervor.',
+      rating: 3.0,
     },
+
   ];
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -226,8 +248,14 @@ const TrendingDestinations: React.FC = () => {
     }
   };
 
-  const handleViewMapClick = (location: string) => {
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`, '_blank');
+  const openModal = (event: EventData) => {
+    setSelectedEvent(event);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedEvent(null);
   };
 
   const toggleFavorite = (index: number) => {
@@ -254,7 +282,7 @@ const TrendingDestinations: React.FC = () => {
             key={index}
             style={{
               ...eventCardStyles,
-              ...(hoveredIndex === index ? eventCardHoverStyles : {}), // Apply popup effect on hover
+              ...(hoveredIndex === index ? eventCardHoverStyles : {}),
             }}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
@@ -264,12 +292,12 @@ const TrendingDestinations: React.FC = () => {
               <button
                 style={{
                   ...buttonBaseStyles,
-                  display: hoveredIndex === index ? 'block' : 'none', // Show button on hover
+                  display: hoveredIndex === index ? 'block' : 'none',
                   ...(hoveredIndex === index ? buttonHoverStyles : {}),
                 }}
-                onClick={() => handleViewMapClick(event.location)}
+                onClick={() => openModal(event)}
               >
-                View In Map
+                View Details
               </button>
             </div>
             <div
@@ -293,6 +321,13 @@ const TrendingDestinations: React.FC = () => {
           </div>
         ))}
       </div>
+      {selectedEvent && (
+        <EventDetailModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          event={selectedEvent}
+        />
+      )}
     </section>
   );
 };
