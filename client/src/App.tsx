@@ -10,6 +10,9 @@ import Admin from "./pages/admin";
 import Services from "./pages/services";
 import News from "./pages/news";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 function App() {
   return (
     <Routes>
