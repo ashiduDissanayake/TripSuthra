@@ -6,6 +6,7 @@ import BlogPage from "@/pages/blog";
 import AboutPage from "@/pages/about";
 import LandingPage from "./pages/landingpage1";
 import Destination from "./pages/destination";
+import LogIn from "./pages/login";
 import Admin from "./pages/admin";
 import Services from "./pages/services";
 import News from "./pages/news";
@@ -22,6 +23,7 @@ function App() {
       <Route element={<AboutPage />} path="/about" />
       <Route element={<LandingPage />} path="/landing" />
       <Route element={<Destination />} path="/destination" />
+      <Route element={<LogIn />} path="/login" />
       <Route element={<Admin />} path="/admin" />
       <Route element={<News />} path="/news" />
     </Routes>
