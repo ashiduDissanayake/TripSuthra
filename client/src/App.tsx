@@ -4,10 +4,14 @@ import IndexPage from "@/pages/index";
 import PricingPage from "@/pages/pricing";
 import BlogPage from "@/pages/blog";
 import AboutPage from "@/pages/about";
-import LandingPage from "./pages/landingPage";
+import LandingPage from "./pages/landingpage1";
 import Destination from "./pages/destination";
 import Admin from "./pages/admin";
 import Services from "./pages/services";
+import News from "./pages/news";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   return (
@@ -20,6 +24,7 @@ function App() {
       <Route element={<Destination />} path="/destination" />
       <Route element={<Admin />} path="/admin" />
       <Route element={<Services />} path="/services" />
+      <Route element={<News />} path="/news" />
     </Routes>
   );
 }
