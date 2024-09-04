@@ -7,7 +7,7 @@ const containerStyles: CSSProperties = {
   alignItems: 'center',
   justifyContent: 'center',
   padding: '30px',
-  margin: '0 auto', // Center the container horizontally
+  margin: '30px auto', // Center the container horizontally
   borderRadius: '10px',
   backgroundColor: '#f8f9fa',
   boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
