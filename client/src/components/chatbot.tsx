@@ -1,58 +1,128 @@
-import React, { useState } from 'react';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import React, { useState } from "react";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const Chatbot = () => {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
-  
-  const handleSend = async () => {
-    console.log('API Key:', process.env.REACT_APP_API_KEY);  // Add this line in your component
+const TravellerChat = () => {
+  const [messages, setMessages] = useState([
+    {
+      role: "model",
+      text: "Hello! 👋 I'm Traveller, your friendly travel assistant here to help you plan a relaxing and stress-free trip. \n\nTo get started, tell me a little about your dream vacation. What kind of experience are you hoping for? Do you prefer adventure, relaxation, or something in between? Also, please share your email address so I can keep you updated on your trip planning. \n\nOnce I have this information, I can create a personalized itinerary and offer some calming travel tips to ensure your journey is as smooth and enjoyable as possible!",
+    },
+  ]);
+  const [input, setInput] = useState("");
+  const apiKey = import.meta.env.VITE_REACT_APP_GEMINI_API_KEY;
+  const genAI = new GoogleGenerativeAI(apiKey);
+  const model = genAI.getGenerativeModel({
+    model: "gemini-1.5-flash",
+    systemInstruction:
+      "You are a friendly assistant named Traveller, designed to help users have a relaxed and stress-free travel experience. Your role is to assist users in planning their travel by first capturing their travel preferences and email address. Do not answer the user's travel-related questions until they have provided their preferences and email address. Once you have captured this information, verify that the email address is correct. Then, thank the user and output their preferences and email address in this format: {{preferences: user's travel preferences}} {{email: user's email address}}. After capturing the user's travel preferences and email address, proceed to offer personalized travel recommendations, calming travel tips, and logistical advice based on their preferences. Make sure to encourage users to enjoy a stress-free journey by exploring low-stress options and tranquil destinations.",
+  });
 
-    if (!input.trim()) return;
+  const generationConfig = {
+    temperature: 1,
+    topP: 0.95,
+    topK: 64,
+    maxOutputTokens: 8192,
+    responseMimeType: "text/plain",
+  };
 
-    const userMessage = { text: input, sender: 'user' };
-    setMessages([...messages, userMessage]);
+  const sendMessage = async () => {
+    const newMessage = { role: "user", text: input };
+    setMessages([...messages, newMessage]);
+    setInput("");
 
-    const genAI = new GoogleGenerativeAI(process.env.REACT_APP_API_KEY || '');
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    // Include only the user's message to start the chat session
+    const initialChatHistory = [
+      {
+        role: "user",
+        parts: [{ text: input }],
+      },
+    ];
 
-    try {
-      const response = await model.generateContent(input);
-      const botMessage = { text: response.response.text(), sender: 'bot' };
-      setMessages([...messages, userMessage, botMessage]);
-    } catch (error) {
-      console.error('Error generating response:', error);
-      const errorMessage = { text: 'Sorry, something went wrong. Please try again.', sender: 'bot' };
-      setMessages([...messages, userMessage, errorMessage]);
-    }
+    const chatSession = model.startChat({
+      generationConfig,
+      history: initialChatHistory,
+    });
 
-    setInput('');
+    const result = await chatSession.sendMessage(input);
+    const responseText = await result.response.text();
 
+    setMessages([
+      ...messages,
+      newMessage,
+      { role: "model", text: responseText },
+    ]);
   };
 
   return (
-    <div style={{ width: '300px', margin: '0 auto', padding: '20px', border: '1px solid #ddd', borderRadius: '5px' }}>
-      <div style={{ height: '400px', overflowY: 'scroll', marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }}>
+    <div
+      style={{
+        padding: "20px",
+        maxWidth: "600px",
+        margin: "auto",
+        backgroundColor: "#f5f5f5",
+        borderRadius: "10px",
+      }}
+    >
+      <h2>Traveller Chat</h2>
+      <div
+        style={{
+          height: "400px",
+          overflowY: "scroll",
+          border: "1px solid #ccc",
+          padding: "10px",
+          borderRadius: "10px",
+          backgroundColor: "#fff",
+        }}
+      >
         {messages.map((msg, index) => (
-          <div key={index} style={{ textAlign: msg.sender === 'user' ? 'right' : 'left', marginBottom: '10px' }}>
-            <span style={{ backgroundColor: msg.sender === 'user' ? '#e0e0e0' : '#007bff', color: msg.sender === 'user' ? '#000' : '#fff', padding: '8px 12px', borderRadius: '10px', display: 'inline-block' }}>
+          <div
+            key={index}
+            style={{
+              margin: "10px 0",
+              textAlign: msg.role === "user" ? "right" : "left",
+            }}
+          >
+            <p
+              style={{
+                margin: 0,
+                fontWeight: msg.role === "user" ? "bold" : "normal",
+              }}
+            >
               {msg.text}
-            </span>
+            </p>
           </div>
         ))}
       </div>
-      <input
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Type a message..."
-        style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc', marginBottom: '10px' }}
-      />
-      <button onClick={handleSend} style={{ width: '100%', padding: '10px', backgroundColor: '#007bff', color: '#fff', borderRadius: '5px', border: 'none' }}>
-        Send
-      </button>
+      <div style={{ marginTop: "10px", display: "flex", alignItems: "center" }}>
+        <input
+          style={{
+            flex: 1,
+            padding: "10px",
+            borderRadius: "5px",
+            border: "1px solid #ccc",
+          }}
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Type your message..."
+        />
+        <button
+          style={{
+            marginLeft: "10px",
+            padding: "10px 20px",
+            borderRadius: "5px",
+            border: "none",
+            backgroundColor: "#007bff",
+            color: "#fff",
+            cursor: "pointer",
+          }}
+          onClick={sendMessage}
+        >
+          Send
+        </button>
+      </div>
     </div>
   );
 };
 
-export default Chatbot;
+export default TravellerChat;
