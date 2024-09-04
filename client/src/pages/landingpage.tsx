@@ -1,20 +1,17 @@
-import HeroSection from '@/components/landingpage/herosection'
-
+import DefaultLayout from '@/layouts/default'
+import { title } from "@/components/primitives";
 import React from 'react'
-
-import TrendingEvents from '@/components/landingpage/TrendingEvents';
-import TrendingDestinations from '@/components/landingpage/TrendingDestinations';
+import Hero from '@/components/landingpage/hero';
 
 const LandingPage = () => {
   return (
-    <div>
-
-    <HeroSection />
-    <TrendingEvents />
-    <TouristFeedback />
-    <TrendingDestinations />
-    </div>
-    
+    <DefaultLayout>
+    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+      <div className="inline-block max-w-lg text-center justify-center">
+        <Hero />
+      </div>
+    </section>
+  </DefaultLayout>
   )
 }
 
