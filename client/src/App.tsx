@@ -4,7 +4,7 @@ import IndexPage from "@/pages/index";
 import PricingPage from "@/pages/pricing";
 import BlogPage from "@/pages/blog";
 import AboutPage from "@/pages/about";
-import LandingPage from "./pages/landingPage";
+import LandingPage from "./pages/landingpage1";
 import Destination from "./pages/destination";
 import Admin from "./pages/admin";
 import Services from "./pages/services";
