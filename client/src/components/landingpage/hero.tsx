@@ -1,18 +1,28 @@
-import React from 'react'
+import React from "react";
 
 const Hero = () => {
-    return (
-        <section className="hero">
-            <div className="hero-content">
-                <h1>Travel further. Travel longer. Travel deeper.</h1>
-                <div className="image">
-                    <img className="pexels-harsha" alt="Pexels harsha" src="pexels-harsha-samaranayake-303340503-13391116-1.png" />
-                </div>
-                <input type="text" placeholder="Search your next destination..." />
-                <button>Search</button>
-            </div>
-        </section>
-    )
-}
+  return (
+    <section className="hero">
+      <div className="relative w-full h-[92vh]">
+        <img
+          src="pexels-harsha-samaranayake-303340503-13391116-1.png"
+          alt="Vacation Train"
+          className="object-cover w-full h-full"
+        />
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-50">
+          <h1
+            style={{
+              fontFamily: "'Expletus Sans', sans-serif",
+              fontSize: "4rem",
+              fontWeight: "bold",
+            }}
+          >
+            Travel further. Travel longer. Travel deeper.
+          </h1>
+        </div>
+      </div>
+    </section>
+  );
+};
 
-export default Hero
+export default Hero;
