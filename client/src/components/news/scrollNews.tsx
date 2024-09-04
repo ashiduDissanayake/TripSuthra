@@ -3,7 +3,7 @@ import Content from "./trendingNews";
 
 export default function scrollNews({articles}) {
   return (
-    <ScrollShadow className="w-[500px] h-[400px]">
+    <ScrollShadow className="w-[620px] h-[2150px]">
       {articles.map((news, index) => (
         <Content
           key={index}
