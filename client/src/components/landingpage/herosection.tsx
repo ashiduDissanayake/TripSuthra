@@ -24,6 +24,7 @@ const headingStyles: CSSProperties = {
   marginBottom: '20px',
   marginTop: '300px',
   fontFamily: '"Expletus Sans", sans-serif',
+  fontWeight: '500',
 };
 
 function HeroSection() {

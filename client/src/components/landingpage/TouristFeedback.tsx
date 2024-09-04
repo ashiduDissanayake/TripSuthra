@@ -12,11 +12,19 @@ interface FeedbackData {
 
 // Inline styles for the feedback section
 const feedbackSectionStyles: CSSProperties = {
-  position: 'relative', // Required for the overlay
+  position: 'relative',
   padding: '50px 0',
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  backgroundImage: `url('/public/hero-bg.jpg')`, // Add your background image URL here
+  overflow: 'hidden', // Ensure content remains within the section
+};
+
+const videoStyles: CSSProperties = {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover', // Ensures the video covers the background properly
+  zIndex: 0, // The video should be behind the content
 };
 
 const overlayStyles: CSSProperties = {
@@ -30,8 +38,8 @@ const overlayStyles: CSSProperties = {
 };
 
 const contentStyles: CSSProperties = {
-  position: 'relative', // Position above the overlay
-  zIndex: 2,
+  position: 'relative',
+  zIndex: 2, // Ensure content is above the video and overlay
   textAlign: 'center',
   color: '#fff',
 };
@@ -44,13 +52,13 @@ const feedbackCardStyles: CSSProperties = {
   textAlign: 'center',
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center', // Center items horizontally
+  alignItems: 'center',
 };
 
 const touristImageContainerStyles: CSSProperties = {
   display: 'flex',
-  justifyContent: 'center', // Horizontally center the image
-  alignItems: 'center', // Vertically center the image
+  justifyContent: 'center',
+  alignItems: 'center',
   marginBottom: '15px',
 };
 
@@ -66,13 +74,13 @@ const nameStyles: CSSProperties = {
 };
 
 const locationStyles: CSSProperties = {
-  color: '#6c757d',
+  color: '#fff',
   marginBottom: '18px',
 };
 
 const feedbackTextStyles: CSSProperties = {
   fontStyle: 'italic',
-  fontSize: '18px'
+  fontSize: '18px',
 };
 
 const TouristFeedback: React.FC = () => {
@@ -109,9 +117,15 @@ const TouristFeedback: React.FC = () => {
 
   return (
     <div style={feedbackSectionStyles}>
+      <video autoPlay muted loop style={videoStyles}>
+        <source src="/public/background-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       <div style={overlayStyles}></div>
       <div style={contentStyles}>
-        <h2 style={{ marginBottom: '30px' , fontSize : '36px', fontFamily: '"Expletus Sans", sans-serif',}}>Tourist Feedback</h2>
+        <h2 style={{ marginBottom: '30px', fontSize: '36px', fontFamily: '"Expletus Sans", sans-serif' }}>
+          Tourist Feedback
+        </h2>
         <Slider {...settings}>
           {feedbackData.map((tourist, index) => (
             <div key={index}>
