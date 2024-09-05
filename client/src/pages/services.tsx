@@ -76,30 +76,23 @@ export default function Services() {
     <DefaultLayout>
       <div className="relative w-full">
         {/* Hero Section */}
-        <div className="relative w-full h-[60vh]">
+        <div className="relative w-full h-[92vh]">
           <img
             src={serviceImage}
             alt="Vacation Train"
             className="object-cover w-full h-full"
           />
-          <div className="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-50">
+          <div className="absolute inset-0 flex flex-col justify-center text-white bg-black bg-opacity-30">
             <h1
               style={{
                 fontFamily: "'Expletus Sans', sans-serif",
                 fontSize: "4rem",
                 fontWeight: "bold",
+                textAlign: "-webkit-match-parent",
+                marginLeft: "130px",
               }}
             >
-              Let's Plan Your
-            </h1>
-            <h1
-              style={{
-                fontFamily: "'Expletus Sans', sans-serif",
-                fontSize: "3.5rem",
-                fontWeight: "bold",
-              }}
-            >
-              Vacation...
+              Let's Plan Your<br/>Vacation...
             </h1>
           </div>
         </div>

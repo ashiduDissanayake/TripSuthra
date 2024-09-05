@@ -1,13 +1,20 @@
+import React from 'react';
+import Hero from '@/components/destination/hero';
+import Trendingdestination from '@/components/destination/trendingdestinations';
+import DestinationCategory from '@/components/destination/destinationcategory';
+import Explore from '@/components/destination/explore';
+import App from '@/components/destination/appdownload';
 
-// Adjust the path to where your Image component is located
-
-const Destination = () => {
+const Destination = (): JSX.Element => {
   return (
     <div>
-
-      destinatioD
+      <Hero />
+      <Trendingdestination />
+      <DestinationCategory />
+      <Explore />
+      <App />
     </div>
   );
-};
+}
 
 export default Destination;
