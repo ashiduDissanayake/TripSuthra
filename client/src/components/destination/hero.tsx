@@ -14,12 +14,17 @@ export const Box = (): JSX.Element => {
         </p>
       </div>
       <div className="absolute w-[214px] h-[60px] top-[500px] left-[20px]">
-        <div className="w-[214px] h-[60px] bg-[#087e8b] rounded-[20px] flex items-center justify-center">
-          <p className="[font-family:'Poppins-Regular',Helvetica] font-normal text-[#ffffff] text-2xl text-center tracking-[0] leading-[normal]">
-            Explore more
-          </p>
-        </div>
-      </div>
+  <div className="w-full h-full bg-[#087e8b] rounded-[20px] flex items-center justify-center">
+    <a href="#news" className="w-full h-full flex items-center justify-center">
+      <button className="[font-family:'Poppins-Regular',Helvetica] font-normal text-[#ffffff] text-2xl text-center tracking-[0] leading-[normal] w-full h-full bg-[#087e8b] hover:bg-[#065d6a] rounded-[20px] transition-colors duration-300 ease-in-out">
+        Explore more
+      </button>
+    </a>
+  </div>
+</div>
+
+
+
       
     </div>
   );
