@@ -9,7 +9,7 @@ export const DownloadApp = (): JSX.Element => {
           <div className="inline-flex flex-col items-start gap-6 relative flex-[0_0_auto]">
             <div className="inline-flex items-start gap-2 px-8 py-4 relative flex-[0_0_auto] bg-[#1572d31a] rounded-lg">
               <div className="relative w-fit mt-[-1.00px] font-medium text-primary text-sm tracking-[0] leading-[21px] whitespace-nowrap">
-                DOWNLOAD
+                DOWNLOAD & CONNECT WITH TripSuthra
               </div>
             </div>
             <p className="relative w-[480px] font-semibold text-transparent text-5xl tracking-[0] leading-[57.6px]">

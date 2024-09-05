@@ -2,24 +2,23 @@
 import React from 'react';
 
 interface ButtonPrimaryProps {
-  text: string;
   className?: string;
   textClassName?: string;
-  onClick?: () => void;
+  text: string;
+  href?: string; 
 }
 
 export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
+  className,
+  textClassName,
   text,
-  className = '',
-  textClassName = '',
-  onClick,
+  href, 
 }) => {
   return (
-    <button
-      className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${className}`}
-      onClick={onClick}
-    >
-      <span className={textClassName}>{text}</span>
-    </button>
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      <button className={className}>
+        <span className={textClassName}>{text}</span>
+      </button>
+    </a>
   );
 };

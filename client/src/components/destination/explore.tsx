@@ -23,10 +23,10 @@ export const Box = (): JSX.Element => {
               attraction is White water rafting where you can ride the tides of
               Kelani River.
             </p>
-            <h2 className="absolute w-[274px] h-8 top-[61px] left-[90px] text-white text-2xl">
+            <h2 className="absolute font-bold w-[274px] h-8 top-[61px] left-[90px] text-white text-2xl">
              WATER RAFTING
             </h2>
-            <div className="absolute w-[400px] h-[147px] top-[546px] left-[89px] bg-white rounded-lg pt-2 pr-2 pb-2 pl-6 flex flex-col justify-center space-y-2">
+            <div className="absolute w-[300px] h-[107px] top-[546px] left-[89px] bg-white rounded-lg pt-2 pr-2 pb-2 pl-6 flex flex-col justify-center space-y-2">
               <span className="text-gray-700 text-sm text-[25px] flex items-center">
                 <span className="mr-1">&#128337;</span> Duration: 3 days
               </span>
@@ -36,9 +36,10 @@ export const Box = (): JSX.Element => {
             </div>
             
             <ButtonPrimary
-              className="!h-[100px] !rounded-[80px] !absolute !left-[900px] !bg-[#087e8b] !w-[300px] !top-[546px]"
+              className="!h-[100px] !rounded-[80px] !absolute !left-[900px] !bg-[#087e8b] !w-[300px] !top-[546px] transition-colors duration-300 hover:bg-teal-600 hover:text-gray-200"
               text="Visit In Map"
-              textClassName="!h-[54px] !text-2xl !w-[388px] !top-[39px]"
+              textClassName="!h-[54px] !text-2xl !w-[388px] !top-[39px] "
+              href="https://www.google.com/maps?q=Kitulagala,+Sri+Lanka"
             />
           </div>
           <div className="top-[974px] rounded-[18px] absolute w-[1450px] h-[728px] left-11 bg-[#13294b] overflow-hidden border-2 border-solid shadow-[0px_0px_20px_15px_#ffffff33]">
@@ -53,10 +54,10 @@ export const Box = (): JSX.Element => {
               morning period is ideal for surfing here, as the wind generally
               swings on-shore after about 12 noon during this season.
             </p>
-            <p className="absolute w-[274px] h-8 top-[61px] left-[90px] text-white text-2xl">
+            <p className="absolute font-bold w-[274px] h-8 top-[61px] left-[90px] text-white text-2xl">
              ARUGAMBAY
             </p>
-            <div className="absolute w-[400px] h-[147px] top-[546px] left-[89px] bg-white rounded-lg pt-2 pr-2 pb-2 pl-6 flex flex-col justify-center space-y-2">
+            <div className="absolute w-[300px] h-[107px] top-[546px] left-[89px] bg-white rounded-lg pt-2 pr-2 pb-2 pl-6 flex flex-col justify-center space-y-2">
               <span className="text-gray-700 text-sm text-[25px] flex items-center">
                 <span className="mr-1">&#128337;</span> Duration: 3 days
               </span>
@@ -65,9 +66,10 @@ export const Box = (): JSX.Element => {
               </span>
             </div>
             <ButtonPrimary
-              className="!h-[100px] !rounded-[80px] !absolute !left-[900px] !bg-[#087e8b] !w-[300px] !top-[546px]"
+              className="!h-[100px] !rounded-[80px] !absolute !left-[900px] !bg-[#087e8b] !w-[300px] !top-[546px] transition-colors duration-300 hover:bg-teal-600 hover:text-gray-200"
               text="Visit In Map"
               textClassName="!h-[54px] !text-2xl !w-[388px] !top-[39px]"
+              href="https://www.google.com/maps?q=Arugam+Bay,+Sri+Lanka"
             />
           </div>
           <div className="top-[1750px] rounded-[18px] absolute w-[1450px] h-[728px] left-11 bg-[#13294b] overflow-hidden border-2 border-solid shadow-[0px_0px_20px_15px_#ffffff33]">
@@ -93,10 +95,10 @@ export const Box = (): JSX.Element => {
               slides at 80kmph, and offers a bird’s-eye view of the beautiful
               hills of the island.
             </p>
-            <p className="absolute w-[274px] h-8 top-[61px] left-[90px] text-white text-2xl">
+            <p className="absolute font-bold w-[274px] h-8 top-[61px] left-[90px] text-white text-2xl">
              FLYING RAWANA
             </p>
-            <div className="absolute w-[400px] h-[147px] top-[546px] left-[89px] bg-white rounded-lg pt-2 pr-2 pb-2 pl-6 flex flex-col justify-center space-y-2">
+            <div className="absolute w-[300px] h-[107px] top-[546px] left-[89px] bg-white rounded-lg pt-2 pr-2 pb-2 pl-6 flex flex-col justify-center space-y-2">
               <span className="text-gray-700 text-sm text-[25px] flex items-center">
                 <span className="mr-1">&#128337;</span> Duration: 3 days
               </span>
@@ -105,9 +107,10 @@ export const Box = (): JSX.Element => {
               </span>
             </div>
             <ButtonPrimary
-              className="!h-[100px] !rounded-[80px] !absolute !left-[900px] !bg-[#087e8b] !w-[300px] !top-[546px]"
+              className="!h-[100px] !rounded-[80px] !absolute !left-[900px] !bg-[#087e8b] !w-[300px] !top-[546px] transition-colors duration-300 hover:bg-teal-600 hover:text-gray-200"
               text="Visit In Map"
               textClassName="!h-[54px] !text-2xl !w-[388px] !top-[39px]"
+               href="https://www.google.com/maps?q=Flying+Ravana,+Ella,+Sri+Lanka"
             />
           </div>
           <div className="absolute top-[50px] left-[537px] text-[#ffffff] text-[64px] font-normal">
