@@ -1,14 +1,56 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-const DriverSignUp = () => {
-  const navigate = useNavigate(); // useNavigate hook from react-router-dom
+const mockUniqueUsernames = ['john123', 'susan99', 'mike2020']; // Mock list of taken usernames for uniqueness check
+
+const UserSignUp = () => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [usernameError, setUsernameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const validatePassword = () => {
+    if (password !== confirmPassword) {
+      setPasswordError('Passwords do not match');
+      return false;
+    }
+    setPasswordError('');
+    return true;
+  };
+
+  const validateUsername = () => {
+    if (mockUniqueUsernames.includes(username)) {
+      setUsernameError('Username is already taken');
+      return false;
+    }
+    setUsernameError('');
+    return true;
+  };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
-    // Navigate to another page after validation
-    navigate('/drivesignup2');
+    const isPasswordValid = validatePassword();
+    const isUsernameValid = validateUsername();
+    const isEmailValid = validateEmail(email);
+
+    if (!isEmailValid) {
+      setEmailError('Please enter a valid email address');
+      return;
+    } else {
+      setEmailError('');
+    }
+
+    if (isPasswordValid && isUsernameValid && isEmailValid) {
+      alert('Form submitted successfully!');
+    }
   };
 
   return (
@@ -189,10 +231,9 @@ const DriverSignUp = () => {
 
         .txt7{
           background-color: #3A5B22;
-          align-items:center
         }
 
-        .name,.license,.address,.mobile{
+        .name,.email,.password,.confirm-password{
           outline: none;
           border-radius: 20px;
         }
@@ -208,26 +249,65 @@ const DriverSignUp = () => {
             <img src="/public/11.png" alt="logo" />
         </div>
         <div className="login-form">
-          <p className="txt3">Sign Up as Driver</p>
+          <p className="txt3">Sign Up as Guide</p>
           <form onSubmit={handleSubmit}>
-            <label htmlFor="name" className="txt5">Name</label>
-            <input className="name" type="text" id="name" name="name" required placeholder="Enter the name"/>
+            <label htmlFor="username" className="txt5">Username</label>
+            <input
+              className="name"
+              type="text"
+              id="username"
+              name="username"
+              required
+              placeholder="Enter a unique username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            {usernameError && <div className="error">{usernameError}</div>}
 
-            <label htmlFor="license" className="txt6">License Number</label>
-            <input className="license" type="text" id="license" name="license" required placeholder="Enter license number"/>
+            <label htmlFor="email" className="txt6">Email</label>
+            <input
+              className="email"
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {emailError && <div className="error">{emailError}</div>}
 
-            <label htmlFor="address" className="txt6">Address</label>
-            <input className="address" type="text" id="address" name="address" required placeholder="Enter address"/>
+            <label htmlFor="password" className="txt6">Password</label>
+            <input
+              className="password"
+              type="password"
+              id="password"
+              name="password"
+              required
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-            <label htmlFor="mobile" className="txt6">Mobile Number</label>
-            <input className="mobile" type="text" id="mobile" name="mobile" required placeholder="Enter mobile number"/>
+            <label htmlFor="confirm-password" className="txt6">Confirm Password</label>
+            <input
+              className="confirm-password"
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+              required
+              placeholder="Confirm your password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            {passwordError && <div className="error">{passwordError}</div>}
 
             <div className="options-container">
               <label className="terms-label">
-                <input type="checkbox" name="eligible" /> I am eligible to sign up as a driver
+                <input type="checkbox" name="terms" required /> I am a certified guide
               </label>
 
-              <button type="submit" className="btn0">Next</button>
+              <button type="submit" className="btn0">Submit</button>
             </div>
 
             <p className="txt1">or</p>
@@ -250,7 +330,7 @@ const DriverSignUp = () => {
         </div>
         <div className="image-section">
           <div className="image-container">
-            <img src="/public/Driver.jpg" alt="Driver Scene" />
+            <img src="/public/Girl.jpg" alt="Signup Scene" />
           </div>
         </div>
       </div>
@@ -258,4 +338,4 @@ const DriverSignUp = () => {
   );
 }
 
-export default DriverSignUp;
+export default UserSignUp;

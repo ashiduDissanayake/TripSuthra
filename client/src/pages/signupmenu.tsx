@@ -21,7 +21,7 @@ const SignupMenu = () => {
           display: flex;
           justify-content: center;
           align-items: center;
-          background-image: url('https://example.com/your-background-image.jpg'); /* Replace with your image URL */
+          background-image: url('./public/Mountain.jpg'); /* Replace with your image URL */
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
@@ -29,69 +29,68 @@ const SignupMenu = () => {
           overflow: hidden;
         }
 
-        /* Overlay to darken the background image */
-        .overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(19, 41, 75, 0.75); /* Oxford Blue with 75% opacity */
-          z-index: 1;
-        }
-
-        .menu-container {
-          position: relative;
-          z-index: 2;
+        .container {
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           height: 100%;
           color: #F4F6EF; /* Baby Powder */
+          text-align: center;
+          padding: 20px;
         }
 
-        h2 {
+        .quote {
           font-family: 'Expletus Sans', sans-serif;
-          font-size: 32px;
-          font-weight: 700;
+          font-size: 24px;
+          font-weight: 400;
+          color: #003300; /* Baby Powder */
+          margin-bottom: 40px;
+          max-width: 80%;
+        }
+
+        .box-container {
+          display: flex;
+          justify-content: space-around;
+          width: 100%;
+          max-width: 800px;
+        }
+
+        .box {
+          background: rgb(51,102,0); /* Semi-transparent background */
           color: #F4F6EF; /* Baby Powder */
-          margin-bottom: 20px;
+          border: none;
+          padding: 20px;
+          margin: 10px;
+          border-radius: 10px;
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+          cursor: pointer;
+          transition: all 0.3s ease;
+          flex: 1;
           text-align: center;
         }
 
-        .role-button {
-          background-color: #087E8B; /* Teal */
-          color: white;
-          font-family: 'Montserrat', sans-serif;
-          border: none;
-          padding: 14px 30px;
-          margin: 15px;
-          font-size: 18px;
-          border-radius: 40px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .role-button:hover {
-          background-color: #065E63; /* Darker Teal */
+        .box:hover {
+          background-color: #003300);
           transform: translateY(-4px);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
         }
 
-        .role-button:focus {
+        .box:focus {
           outline: none;
         }
       `}</style>
 
-      <div className="overlay"></div> {/* Overlay to darken the background image */}
+      <div className="container">
+        <div className="quote">
+          "Travel is the only thing you buy that makes you richer."
+        </div>
 
-      <div className="menu-container">
-        <h2>Sign up as:</h2>
-        <button className="role-button" onClick={() => handleRoleSelection('traveler')}>Traveler</button>
-        <button className="role-button" onClick={() => handleRoleSelection('driver')}>Driver</button>
-        <button className="role-button" onClick={() => handleRoleSelection('guide')}>Guide</button>
+        <div className="box-container">
+          <button className="box" onClick={() => handleRoleSelection('traveler')}>Traveler</button>
+          <button className="box" onClick={() => handleRoleSelection('driver')}>Driver</button>
+          <button className="box" onClick={() => handleRoleSelection('guide')}>Guide</button>
+        </div>
       </div>
     </>
   );
