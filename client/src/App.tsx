@@ -11,9 +11,11 @@ import Admin from "./pages/admin";
 import Services from "./pages/services";
 import News from "./pages/news";
 import Events from "./components/landingpage/events";
+import Visa from "./pages/visa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import EventDetailModal from "./components/landingpage/EventDetailModal";
+import AddTravelInfo from "./pages/travelInfo";
 
 function App() {
   return (
@@ -28,6 +30,9 @@ function App() {
       <Route element={<Services />} path="/services" />
       <Route element={<News />} path="/news" />
       <Route element={<Events />} path="/test" />
+      <Route element={<Visa />} path="/visa" />
+      <Route element={<AddTravelInfo />} path="/addTravelInfo" />
+
     </Routes>
   );
 }
