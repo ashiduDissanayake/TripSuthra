@@ -66,6 +66,7 @@ const touristImageStyles: CSSProperties = {
   width: '100px',
   height: '100px',
   borderRadius: '50%',
+  margin: '0',
 };
 
 const nameStyles: CSSProperties = {
