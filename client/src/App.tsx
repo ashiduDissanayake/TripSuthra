@@ -21,6 +21,9 @@ import SignupMenu from "./pages/signupmenu";
 import TravelerSignup from "./pages/travelerSignup";
 import DriverSignup from "./pages/driverSignup";
 import GuideSignup from "./pages/guideSignup";
+import SignUp2 from "./pages/travelerSignup1";
+import DriverSignUp2 from "./pages/driverSignup2";
+import GuideSignUp2 from "./pages/guideSignup2";
 
 function App() {
   return (
@@ -42,6 +45,10 @@ function App() {
       <Route element={<DriverSignup />} path="/signup/driver" />
       <Route element={<GuideSignup />} path="/signup/guide" />
       <Route element={<HomePage />} path="/home" />
+      <Route element={<SignUp2/>} path="/signup2"/>
+      <Route element={<DriverSignUp2/>} path="/drivesignup2"/>
+      <Route element={<GuideSignUp2/>} path="guidesignup2"/>
+
     </Routes>
   );
 }
