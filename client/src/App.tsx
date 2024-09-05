@@ -14,6 +14,7 @@ import Events from "./components/landingpage/events";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import EventDetailModal from "./components/landingpage/EventDetailModal";
+import Guide from "./pages/guide";
 import SignIn from "./pages/signin";
 import HomePage from "./Debug/homepage";
 import SignupMenu from "./pages/signupmenu";
@@ -21,6 +22,9 @@ import TravelerSignup from "./pages/travelerSignup";
 import DriverSignup from "./pages/driverSignup";
 import GuideSignup from "./pages/guideSignup";
 import Dashboard from "./pages/dashboard";
+import SignUp2 from "./pages/travelerSignup1";
+import DriverSignUp2 from "./pages/driverSignup2";
+import GuideSignUp2 from "./pages/guideSignup2";
 
 function App() {
   return (
@@ -35,6 +39,7 @@ function App() {
       <Route element={<Services />} path="/services" />
       <Route element={<News />} path="/news" />
       <Route element={<Events />} path="/test" />
+      <Route element={<Guide />} path="/guide" />
       <Route element={<SignIn />} path="/signin" />
       <Route element={<SignupMenu />} path="/signup" />
       <Route element={<TravelerSignup />} path="/signup/traveler" />
@@ -42,6 +47,9 @@ function App() {
       <Route element={<GuideSignup />} path="/signup/guide" />
       <Route element={<HomePage />} path="/home" />
       <Route element={<Dashboard />} path="/dashboard" />
+      <Route element={<SignUp2/>} path="/signup2"/>
+      <Route element={<DriverSignUp2/>} path="/drivesignup2"/>
+      <Route element={<GuideSignUp2/>} path="guidesignup2"/>
     </Routes>
   );
 }
