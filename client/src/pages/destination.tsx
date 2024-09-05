@@ -4,7 +4,7 @@ import Trendingdestination from '@/components/destination/trendingdestinations';
 import DestinationCategory from '@/components/destination/destinationcategory';
 import Explore from '@/components/destination/explore';
 import App from '@/components/destination/appdownload';
-import TopStories from '@/components/destination/topstories';
+
 
 
 const Destination = (): JSX.Element => {
@@ -15,7 +15,7 @@ const Destination = (): JSX.Element => {
       <DestinationCategory />
       <Explore />
       <App />
-      <TopStories />
+
     </div>
   );
 }
