@@ -20,14 +20,15 @@ import SignupMenu from "./pages/signupmenu";
 import TravelerSignup from "./pages/travelerSignup";
 import DriverSignup from "./pages/driverSignup";
 import GuideSignup from "./pages/guideSignup";
+import Dashboard from "./pages/dashboard";
 
 function App() {
   return (
     <Routes>
+      <Route element={<LandingPage />} path="/" />
       <Route element={<PricingPage />} path="/pricing" />
       <Route element={<BlogPage />} path="/blog" />
       <Route element={<AboutPage />} path="/about" />
-      <Route element={<LandingPage />} path="/" />
       <Route element={<Destination />} path="/destination" />
       <Route element={<LogIn />} path="/login" />
       <Route element={<Admin />} path="/admin" />
@@ -40,6 +41,7 @@ function App() {
       <Route element={<DriverSignup />} path="/signup/driver" />
       <Route element={<GuideSignup />} path="/signup/guide" />
       <Route element={<HomePage />} path="/home" />
+      <Route element={<Dashboard />} path="/dashboard" />
     </Routes>
   );
 }

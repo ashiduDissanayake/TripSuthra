@@ -1,21 +1,28 @@
 const express = require('express');
-const corsMiddleware = require('./middlewares/corsMiddleware');
-const eventRoutes = require('./routes/eventRoutes');
-const authRoutes = require('./routes/authRoutes');
+const sequelize = require('./config/db'); // Import the Sequelize instance
 
+// Initialize the app
 const app = express();
-const PORT = 3000;
+const port = process.env.PORT || 3000;
 
-// Apply middleware
-app.use(corsMiddleware);
+// Middleware (if needed)
 app.use(express.json());
 
-
-// Routes
-app.use('/api', eventRoutes);
-app.use('/auth', authRoutes);
+// Define routes (simple test route)
+app.get('/', (req, res) => {
+  res.send('Server is running and connected to the database.');
+});
 
 // Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
+
+// Test database connection
+sequelize.authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch((err) => {
+    console.error('Unable to connect to the database:', err);
+  });
