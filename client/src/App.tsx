@@ -15,6 +15,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import EventDetailModal from "./components/landingpage/EventDetailModal";
 import SignIn from "./pages/signin";
+import HomePage from "./Debug/homepage";
+import SignupMenu from "./pages/signupmenu";
+import TravelerSignup from "./pages/travelerSignup";
+import DriverSignup from "./pages/driverSignup";
+import GuideSignup from "./pages/guideSignup";
 
 function App() {
   return (
@@ -30,6 +35,11 @@ function App() {
       <Route element={<News />} path="/news" />
       <Route element={<Events />} path="/test" />
       <Route element={<SignIn />} path="/signin" />
+      <Route element={<SignupMenu />} path="/signup" />
+      <Route element={<TravelerSignup />} path="/signup/traveler" />
+      <Route element={<DriverSignup />} path="/signup/driver" />
+      <Route element={<GuideSignup />} path="/signup/guide" />
+      <Route element={<HomePage />} path="/home" />
     </Routes>
   );
 }
