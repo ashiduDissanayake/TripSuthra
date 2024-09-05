@@ -8,7 +8,7 @@ export default function News() {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    const url = `https://newsapi.org/v2/everything?q=tourism&apiKey=cb72372e42f440e08b548b3cb6f3b756`;
+    const url = `https://newsapi.org/v2/everything?q=tourism&apiKey=${import.meta.env.VITE_REACT_APP_NEWS_API_KEY}`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => setArticles(data.articles));
