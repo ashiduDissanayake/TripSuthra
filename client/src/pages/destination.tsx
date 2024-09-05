@@ -6,24 +6,21 @@ import Explore from "@/components/destination/explore";
 import App from "@/components/destination/appdownload";
 import { Navbar } from "@/components/navbar";
 import Footer from "@/components/footer";
+import DefaultLayout from "@/layouts/default";
 
 Footer;
 Navbar;
 const Destination = (): JSX.Element => {
   return (
-    <div>
-      <div className="pb-1">
-        <Navbar />
-      </div>
-      <Hero />
-      <Trendingdestination />
-      <DestinationCategory />
-      <Explore />
-      <App />
-      <div className="pt-1">
-        <Footer />
-      </div>
-    </div>
+    <>
+      <DefaultLayout>
+        <Hero />
+        <Trendingdestination />
+        <DestinationCategory />
+        <Explore />
+        <App />
+      </DefaultLayout>
+    </>
   );
 };
 
