@@ -5,8 +5,6 @@ import DestinationCategory from '@/components/destination/destinationcategory';
 import Explore from '@/components/destination/explore';
 import App from '@/components/destination/appdownload';
 
-
-
 const Destination = (): JSX.Element => {
   return (
     <div>
@@ -15,7 +13,6 @@ const Destination = (): JSX.Element => {
       <DestinationCategory />
       <Explore />
       <App />
-
     </div>
   );
 }
