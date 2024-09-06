@@ -32,7 +32,6 @@ function App() {
       <Route element={<Events />} path="/test" />
       <Route element={<Visa />} path="/visa" />
       <Route element={<AddTravelInfo />} path="/addTravelInfo" />
-
     </Routes>
   );
 }
