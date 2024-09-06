@@ -16,6 +16,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import EventDetailModal from "./components/landingpage/EventDetailModal";
 import AddTravelInfo from "./pages/travelInfo";
+import Payment from "./pages/payment";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       <Route element={<Events />} path="/test" />
       <Route element={<Visa />} path="/visa" />
       <Route element={<AddTravelInfo />} path="/addTravelInfo" />
+      <Route element={<Payment />} path="/payment" />
     </Routes>
   );
 }
