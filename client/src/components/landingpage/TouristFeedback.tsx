@@ -64,10 +64,17 @@ const feedbackCardStyles: React.CSSProperties = {
   textAlign: "center",
 };
 
+
+const touristImageStyles: CSSProperties = {
+  width: '100px',
+  height: '100px',
+  borderRadius: '50%',
+  margin: '0',
 const feedbackCardHoverStyles: React.CSSProperties = {
   transform: "scale(1)",
   opacity: 1,
   boxShadow: "0 12px 24px rgba(0, 0, 0, 0.4)",
+
 };
 
 const touristImageStyles: React.CSSProperties = {

@@ -7,9 +7,12 @@ import Admin from "./pages/admin";
 import Services from "./pages/services";
 import News from "./pages/news";
 import Events from "./components/landingpage/events";
+import Visa from "./pages/visa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import EventDetailModal from "./components/landingpage/EventDetailModal";
+import AddTravelInfo from "./pages/travelInfo";
+import Payment from "./pages/payment";
 import Guide from "./pages/guide";
 import SignIn from "./pages/signin";
 import HomePage from "./Debug/homepage";
@@ -32,6 +35,10 @@ function App() {
       <Route element={<Services />} path="/services" />
       <Route element={<Destination />} path="/destination" />
       <Route element={<News />} path="/news" />
+      <Route element={<Events />} path="/test" />
+      <Route element={<Visa />} path="/visa" />
+      <Route element={<AddTravelInfo />} path="/addTravelInfo" />
+      <Route element={<Payment />} path="/payment" />
       {/*<Route element={<Events />} path="/events" />*/}
       <Route element={<LoginPage />} path="/login" />
       <Route element={<SignupMenu />} path="/signup" />
