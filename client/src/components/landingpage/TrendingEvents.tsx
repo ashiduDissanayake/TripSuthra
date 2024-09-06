@@ -139,9 +139,16 @@ const TrendingEvents: React.FC = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/v1/event/trending-events");
-        console.log("Fetched events:", response.data); // Add this line
-        setEventsData(response.data.events);
+        const response = await axios.get(
+          "http://localhost:3000/api/v1/event/trending-events"
+        );
+
+        // Check if response.data has the correct structure
+        if (response.data && Array.isArray(response.data.data)) {
+          setEventsData(response.data.data); // Access the 'data' field which contains the array
+        } else {
+          console.error("Invalid data format:", response.data); // Log if the format is wrong
+        }
       } catch (error) {
         console.error("Error fetching events:", error);
       }

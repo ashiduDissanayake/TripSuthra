@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Box = (): JSX.Element => {
   return (
-    <div className="absolute top-[50px] left-[50px] w-[800px] h-[450px] bg-[#13294b78] rounded-[40px] shadow-[0px_4px_4px_#00000040,0px_4px_4px_#00000040,0px_4px_4px_#00000040,0px_4px_4px_#00000040,0px_4px_4px_#00000040,0px_4px_4px_#00000040,0px_4px_4px_#00000040,0px_4px_4px_#00000040]">
+    <div className="absolute top-[150px] left-[50px] w-[800px] h-[450px] bg-[#13294b78] rounded-[40px] shadow-[0px_4px_4px_#00000040,0px_4px_4px_#00000040,0px_4px_4px_#00000040,0px_4px_4px_#00000040,0px_4px_4px_#00000040,0px_4px_4px_#00000040,0px_4px_4px_#00000040,0px_4px_4px_#00000040]">
       <div className="absolute w-[923px] h-[170px] top-[40px] left-[20px]">
         <p className="w-[750px] [font-family:'Poppins-Medium',Helvetica] font-bold text-[#f4f6ef] text-[50px] tracking-[-1.28px] leading-[68px]">
           DISCOVER THE UNEXPLORED BEAUTY OF SRI LANKA
@@ -32,9 +32,9 @@ export const Box = (): JSX.Element => {
 
 export const Image = (): JSX.Element => {
   return (
-    <div className="relative w-[1729px] h-[881px]">
+    <div className="relative ">
       <img
-        className="w-[1728px] h-[881px] object-cover block"
+        className="w-full h-[92vh] object-cover block"
         alt="Weligama beach best"
         src="new1.jpg" // Adjust path as necessary
       />

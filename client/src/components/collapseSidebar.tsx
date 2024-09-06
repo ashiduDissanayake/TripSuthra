@@ -8,6 +8,7 @@ import {
   FaSignOutAlt as LogoutIcon,
 } from "react-icons/fa";
 import { MdMenu as MenuIcon, MdClose as XIcon } from "react-icons/md";
+import { useNavigate } from 'react-router-dom'; // Import the hook
 
 import { Button } from "./ui/button";
 
@@ -19,6 +20,15 @@ const CollapsibleSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const toggleCollapse = () => setIsCollapsed(!isCollapsed);
+  const navigate = useNavigate(); // Initialize navigate
+
+  const handleLogout = (e) => {
+    e.preventDefault(); // Prevent default anchor behavior (navigation)
+    
+    // Delete the token from localStorage
+    localStorage.clear(); // Assuming 'authToken' is the token key
+    navigate('/');
+  };
 
   return (
     <div
@@ -88,6 +98,7 @@ const CollapsibleSidebar = () => {
         <div className="flex flex-col flex-grow mt-8">
         <a
             href="/logout"
+            onClick={handleLogout} 
             className={`flex items-center p-4 hover:bg-custom-teal ${isCollapsed ? "justify-center" : ""}`}
           >
             <LogoutIcon size={24} className={`${isCollapsed ? "" : "mr-4"}`} />
