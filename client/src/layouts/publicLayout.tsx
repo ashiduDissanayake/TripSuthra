@@ -4,16 +4,14 @@ import { useSelector } from "react-redux";
 import ProtectedRoute from "./protectedRoute";
 import PublicRoute from "./publicRoute";
 
-export default function DefaultLayout({ children }) {
-  const { user } = useSelector((state) => state.user); // Access user from Redux
-
+export default function PublicLayout({ children }) {
   return (
     <div className="relative flex flex-col min-h-screen">
-      <ProtectedRoute>
-        <Navbar user={user} />
+      <PublicRoute>
+        <Navbar user={null} />
         <main className="w-full flex-grow pb-10">{children}</main>
         <Footer />
-      </ProtectedRoute>
+      </PublicRoute>
     </div>
   );
 }

@@ -41,6 +41,13 @@ const User = sequelize.define('User', {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
+  imageUrl: {
+    type: DataTypes.STRING,
+    allowNull: true, // Optional: user may or may not have a profile image
+    validate: {
+      isUrl: { msg: 'Must be a valid URL' },
+    },
+  },
   notification: {
     type: DataTypes.JSON,
     defaultValue: [],

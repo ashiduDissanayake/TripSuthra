@@ -1,16 +1,15 @@
 import React from 'react';
 import Layout from "../layouts/layout";
-import PersonalDetailsForm from '@/components/personalDetails';
 import VisaApplicationForm from '@/components/applyForVisa';
 
-const Admin = () => {
+const Visa = () => {
   return (
     <Layout>
       {/* Add your admin page content here */}
-      <PersonalDetailsForm />
+      <VisaApplicationForm />
       {/* You can add more components or content here */}
     </Layout>
   );
 };
 
-export default Admin;
+export default Visa;

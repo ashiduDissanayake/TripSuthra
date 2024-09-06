@@ -1,16 +1,15 @@
 import React from 'react';
 import Layout from "../layouts/layout";
-import PersonalDetailsForm from '@/components/personalDetails';
-import VisaApplicationForm from '@/components/applyForVisa';
+import PaymentForm from '@/components/PaymentMethod';
 
-const Admin = () => {
+const Payment = () => {
   return (
     <Layout>
       {/* Add your admin page content here */}
-      <PersonalDetailsForm />
+      <PaymentForm />
       {/* You can add more components or content here */}
     </Layout>
   );
 };
 
-export default Admin;
+export default Payment;

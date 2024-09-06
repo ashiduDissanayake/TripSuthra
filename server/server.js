@@ -20,6 +20,8 @@ app.use(express.json());
 // routes
 app.use("/api/v1/user", require("./routes/userRoutes"));
 app.use("/api/v1/event", require("./routes/eventRoutes"));
+app.use("/api/v1/feedback", require("./routes/feedbackRoutes"));
+app.use("/api/v1/destination", require("./routes/destinationRoutes"));
 
 // Start the server
 app.listen(port, () => {

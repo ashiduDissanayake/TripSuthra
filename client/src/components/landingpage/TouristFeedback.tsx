@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 
 // Define the type for the feedback data
@@ -98,26 +98,33 @@ const feedbackTextStyles: React.CSSProperties = {
 };
 
 const TouristFeedback: React.FC = () => {
-  const feedbackData: FeedbackData[] = [
-    {
-      name: "John Doe",
-      location: "USA",
-      feedback: "Sri Lanka is an amazing country! I enjoyed every moment.",
-      imageUrl: "/public/male1.jpg",
-    },
-    {
-      name: "Jane Smith",
-      location: "UK",
-      feedback: "The landscapes are breathtaking. Truly a memorable trip!",
-      imageUrl: "/public/male2.jpg",
-    },
-    {
-      name: "Carlos Diaz",
-      location: "Spain",
-      feedback: "The cultural heritage in Sri Lanka is fascinating.",
-      imageUrl: "/public/female1.jpg",
-    },
-  ];
+  const [feedbackData, setFeedbackData] = useState<FeedbackData[]>([]);
+
+  useEffect(() => {
+    // Fetch feedback from the backend
+    const fetchFeedbacks = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/api/v1/feedback/get-feedbacks', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`, // If you have auth
+          },
+        });
+
+        const result = await response.json();
+        if (result.success) {
+          setFeedbackData(result.data);
+        } else {
+          console.error("Error fetching feedback:", result.message);
+        }
+      } catch (error) {
+        console.error("Error fetching feedback:", error);
+      }
+    };
+
+    fetchFeedbacks();
+  }, []);
 
   const settings = {
     dots: true,
