@@ -10,10 +10,14 @@ import {
 import clsx from "clsx";
 import img1 from "@/assets/11.png";
 import { siteConfig } from "@/config/site"; // Ensure siteConfig is correctly defined
+import img from "../../public/male1.jpg"
+
+
 
 
 export const Navbar = ({ user }) => {
   const navigate = useNavigate();
+
 
   return (
     <NextUINavbar maxWidth="xl" position="sticky" className="flex justify-space-between">
@@ -49,8 +53,9 @@ export const Navbar = ({ user }) => {
       {user ? (
         <NavbarContent className="flex justify-end items-center" data-justify="end">
           <NavbarItem>
+          
             <img
-              src={user.avatarUrl}
+              src={img}
               alt="User Avatar"
               className="w-8 h-8 rounded-full cursor-pointer"
               onClick={() => {
@@ -58,6 +63,7 @@ export const Navbar = ({ user }) => {
                 navigate("/user");
               }}
             />
+
           </NavbarItem>
         </NavbarContent>
       ) : (
