@@ -8,8 +8,8 @@ const User = sequelize.define('User', {
     allowNull: false,
     validate: {
       notNull: { msg: 'Name is required' },
-      notEmpty: { msg: 'Name cannot be empty' }
-    }
+      notEmpty: { msg: 'Name cannot be empty' },
+    },
   },
   email: {
     type: DataTypes.STRING,
@@ -18,36 +18,45 @@ const User = sequelize.define('User', {
     validate: {
       notNull: { msg: 'Email is required' },
       notEmpty: { msg: 'Email cannot be empty' },
-      isEmail: { msg: 'Must be a valid email address' }
-    }
+      isEmail: { msg: 'Must be a valid email address' },
+    },
   },
   password: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
       notNull: { msg: 'Password is required' },
-      notEmpty: { msg: 'Password cannot be empty' }
-    }
+      notEmpty: { msg: 'Password cannot be empty' },
+    },
   },
   isAdmin: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
+    defaultValue: false,
   },
-  isDoctor: {
+  isDriver: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
+    defaultValue: false,
+  },
+  isGuide: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
   },
   notification: {
     type: DataTypes.JSON,
-    defaultValue: []
+    defaultValue: [],
   },
   seenNotification: {
     type: DataTypes.JSON,
-    defaultValue: []
-  }
+    defaultValue: [],
+  },
+  createdAt: {
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW,
+    allowNull: false,
+  },
 }, {
   tableName: 'users', // Optional: explicitly set the table name
-  timestamps: true // Enable createdAt and updatedAt
+  timestamps: true, // Enable createdAt and updatedAt
 });
 
 module.exports = User;
