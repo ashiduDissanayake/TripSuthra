@@ -3,7 +3,8 @@ import HeroSearchBar from './HeroSearchBar'; // Import the Airbnb-like search ba
 
 // Inline styles typed correctly
 const heroStyles: CSSProperties = {
-  height: '100vh',
+  height: '92vh',
+  position: 'relative', // Position relative to allow absolute positioning for overlay
   backgroundImage: "url('/public/hero-bg-1.jpg')",
   backgroundSize: 'cover',
   backgroundPosition: 'center',
@@ -14,24 +15,42 @@ const heroStyles: CSSProperties = {
   flexDirection: 'column', // Added this to stack the content vertically
 };
 
+const overlayStyles: CSSProperties = {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  backgroundColor: 'rgba(0, 0, 0, 0.3)', // Dark overlay with 50% opacity
+  zIndex: 0, // Behind the content but on top of the background image
+};
+
 const heroContentStyles: CSSProperties = {
-  textAlign: 'center',
+  textAlign: '-webkit-match-parent',
   color: 'white',
+  zIndex: 1, // Above the overlay
 };
 
 const headingStyles: CSSProperties = {
-  fontSize: '3.5rem',
+  fontSize: '4rem',
+  fontWeight: "bold",
   marginBottom: '20px',
-  marginTop: '300px',
+  marginTop: '170px',
   fontFamily: '"Expletus Sans", sans-serif',
-  fontWeight: '500',
+  marginRight: '320px', 
 };
 
 function HeroSection() {
   return (
     <section style={heroStyles}>
+      {/* Overlay div */}
+      <div style={overlayStyles}></div>
+      
+      {/* Content div */}
       <div style={heroContentStyles}>
-        <h1 style={headingStyles}>Travel further. Travel longer.<br></br> Travel deeper.</h1>
+        <h1 style={headingStyles}>
+          Travel further. Travel longer.<br /> Travel deeper.
+        </h1>
         {/* Replace the old input and button with the HeroSearchBar */}
         <HeroSearchBar />
       </div>

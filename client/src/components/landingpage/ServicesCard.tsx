@@ -5,64 +5,88 @@ import { CSSProperties } from 'react';
 const containerStyles: CSSProperties = {
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
-  padding: '30px',
-  margin: '30px auto', // Center the container horizontally
-  borderRadius: '10px',
-  backgroundColor: '#f8f9fa',
-  boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-  maxWidth: '1200px', // Add a maximum width to the container
+  justifyContent: 'space-between',
+  padding: '40px',
+  margin: '50px 100px',
+  borderRadius: '20px',
+  backgroundColor: '#F9FAFB',
+  boxShadow: '0 8px 20px rgba(0,0,0,0.1)',
 };
 
 const textContainerStyles: CSSProperties = {
   flex: 1,
-  marginRight: '40px', // Add some spacing between the text and options
+  marginRight: '50px',
 };
 
 const servicesTextStyles: CSSProperties = {
+  fontFamily: 'Expletus Sans',
   fontWeight: 'bold',
-  fontSize: '40px',
+  fontSize: '48px',
+  color: '#333',
 };
 
 const descriptionStyles: CSSProperties = {
-  fontSize: '20px',
+  fontSize: '42px',
   marginTop: '10px',
+  color: '#555',
+};
+
+const descriptionStyles2: CSSProperties = {
+  fontSize: '56px',
+  marginTop: '10px',
+  fontWeight: 'bold',
+  color: '#222',
 };
 
 const optionsContainerStyles: CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
-  gap: '20px',
-  flex: 1, // Make the options container take up the remaining space
+  gap: '30px',
+  flex: 1,
 };
 
 const optionStyles: CSSProperties = {
   display: 'flex',
-  alignItems: 'center',
-  gap: '15px',
-  padding: '15px',
-  borderRadius: '10px',
+  flexDirection: 'column',
+  padding: '20px',
+  borderRadius: '15px',
   cursor: 'pointer',
-  transition: 'all 0.3s ease',
+  transition: 'all 0.4s ease',
   backgroundColor: '#fff',
-  transform: 'scale(1)',
+  boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+  position: 'relative',
+  overflow: 'hidden',
 };
 
 const optionHoverStyles: CSSProperties = {
-  boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)',
-  backgroundColor: '#eaf5f3',
-  transform: 'scale(1.05)',
+  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+  backgroundColor: '#dfeff6',
+  transform: 'translateY(-5px)',
 };
 
 const iconStyles: CSSProperties = {
-  fontSize: '24px',
-  color: '#00695c',
+  fontSize: '28px',
+  color: '#00796b',
 };
 
 const titleStyles: CSSProperties = {
   fontWeight: 'bold',
-  fontSize: '18px',
-  color: '#00695c',
+  fontSize: '20px',
+  color: '#00796b',
+};
+
+const hiddenDescriptionStyles: CSSProperties = {
+  fontSize: '16px',
+  marginTop: '10px',
+  color: '#333',
+  maxHeight: '0',
+  overflow: 'hidden',
+  transition: 'max-height 0.4s ease, padding 0.4s ease',
+};
+
+const visibleDescriptionStyles: CSSProperties = {
+  maxHeight: '100px', // adjust this value based on your description length
+  padding: '10px 0',
 };
 
 const ServicesCard: React.FC = () => {
@@ -72,8 +96,7 @@ const ServicesCard: React.FC = () => {
   const options = [
     {
       title: 'Plan with Traveller.ai',
-      description:
-        'With a single click, you are able to find the best trip that suits your needs powered by AI technology.',
+      description: 'With a single click, you are able to find the best trip that suits your needs powered by AI technology.',
       icon: '🚶‍♂️',
       link: '/plan-ai',
     },
@@ -107,7 +130,8 @@ const ServicesCard: React.FC = () => {
     <div style={containerStyles}>
       <div style={textContainerStyles}>
         <p style={servicesTextStyles}>Services</p>
-        <p style={descriptionStyles}>Our top value categories for you</p>
+        <p style={descriptionStyles}>Our top value</p>
+        <p style={descriptionStyles2}>Categories for you</p>
       </div>
       <div style={optionsContainerStyles}>
         {options.map((option, index) => (
@@ -121,10 +145,17 @@ const ServicesCard: React.FC = () => {
             onMouseLeave={handleMouseLeave}
             onClick={() => handleClick(option.link)}
           >
-            <span style={iconStyles}>{option.icon}</span>
-            <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+              <span style={iconStyles}>{option.icon}</span>
               <h3 style={titleStyles}>{option.title}</h3>
-              <p>{option.description}</p>
+            </div>
+            <div
+              style={{
+                ...hiddenDescriptionStyles,
+                ...(hoveredIndex === index ? visibleDescriptionStyles : {}),
+              }}
+            >
+              {option.description}
             </div>
           </div>
         ))}

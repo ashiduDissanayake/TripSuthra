@@ -11,9 +11,10 @@ const searchBarContainer: CSSProperties = {
   backgroundColor: '#fff',
   borderRadius: '30px',
   boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-  width: '1229px',
+  width: 'auto',
   height: '60px',
-  marginTop: '120px'
+  marginTop: '120px',
+  marginRight: '720px',
 };
 
 // Styles for each section of the search bar
@@ -56,13 +57,10 @@ const searchButtonStyles: CSSProperties = {
 
 const HeroSearchBar: React.FC = () => {
   const [location, setLocation] = useState('');
-  const [checkInDate, setCheckInDate] = useState('');
-  const [checkOutDate, setCheckOutDate] = useState('');
-  const [guests, setGuests] = useState('');
 
   const handleSearch = () => {
     // Perform search action here
-    console.log('Search:', { location, checkInDate, checkOutDate, guests });
+    console.log('Search:', { location});
   };
 
   return (
@@ -70,37 +68,10 @@ const HeroSearchBar: React.FC = () => {
       <div style={searchBarSection}>
         <input
           type="text"
-          placeholder="Where?"
+          placeholder="Where to go...?"
           style={inputStyles}
           value={location}
           onChange={(e) => setLocation(e.target.value)}
-        />
-      </div>
-      <div style={searchBarSection}>
-        <input
-          type="date"
-          placeholder="Check-in"
-          style={inputStyles}
-          value={checkInDate}
-          onChange={(e) => setCheckInDate(e.target.value)}
-        />
-      </div>
-      <div style={searchBarSection}>
-        <input
-          type="date"
-          placeholder="Check-out"
-          style={inputStyles}
-          value={checkOutDate}
-          onChange={(e) => setCheckOutDate(e.target.value)}
-        />
-      </div>
-      <div style={lastSection}>
-        <input
-          type="text"
-          placeholder="Guests"
-          style={inputStyles}
-          value={guests}
-          onChange={(e) => setGuests(e.target.value)}
         />
       </div>
       <div style={searchButtonStyles} onClick={handleSearch}>
