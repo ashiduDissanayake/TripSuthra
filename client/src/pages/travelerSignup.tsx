@@ -1,6 +1,8 @@
 
 
 const TravelerSignup = () => {
+
+  // Rest of the code...
   const styles = {
     container: {
       display: 'flex',
@@ -354,5 +356,8 @@ const TravelerSignup = () => {
       </div>
     </>
   );
-}
-export default TravelerSignUp;
+};
+
+export default TravelerSignup;
+
+
