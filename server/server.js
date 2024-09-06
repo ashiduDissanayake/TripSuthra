@@ -1,21 +1,52 @@
-const express = require('express');
-const corsMiddleware = require('./middlewares/corsMiddleware');
-const eventRoutes = require('./routes/eventRoutes');
-const authRoutes = require('./routes/authRoutes');
+const express = require("express");
+const sequelize = require("./config/db"); // Import the Sequelize instance
+const cors = require("cors");
+require('dotenv').config();
 
+// Initialize the app
 const app = express();
-const PORT = 3000;
+const port = 3000;
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Allow frontend origin
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // If you're using cookies
+  })
+);
 
-// Apply middleware
-app.use(corsMiddleware);
+// Middleware (if needed)
 app.use(express.json());
 
-
-// Routes
-app.use('/api', eventRoutes);
-app.use('/auth', authRoutes);
+// routes
+app.use("/api/v1/user", require("./routes/userRoutes"));
+app.use("/api/v1/event", require("./routes/eventRoutes"));
+app.use("/api/v1/feedback", require("./routes/feedbackRoutes"));
+app.use("/api/v1/destination", require("./routes/destinationRoutes"));
 
 // Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
+
+// Test database connection
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connection has been established successfully.");
+  })
+  .catch((err) => {
+    console.error("Unable to connect to the database:", err);
+  });
+
+sequelize
+  .sync({ alter: true })
+  .then(() => {
+    console.log("Database synchronized successfully.");
+    // Start the server after syncing
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error("Error synchronizing database:", error);
+  });

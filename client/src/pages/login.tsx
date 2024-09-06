@@ -1,9 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const LogIn = () => {
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(''); // Clear any previous errors
+    try {
+      const response = await axios.post('localhost:3000/api/v1/user/login', formData);
+      
+      // Handle success
+      const { token } = response.data;
+      alert('Login successful!');
+      
+      // Store token in localStorage (optional)
+      localStorage.setItem('token', token);
+
+      // Redirect to dashboard or another page
+      window.location.href = '/';
+    } catch (error) {
+      // Handle error
+      if (error.response && error.response.data && error.response.data.error) {
+        setError(error.response.data.error); // Show the error from the server
+      } else {
+        setError('An unexpected error occurred. Please try again.'); // Fallback error
+      }
+    }
+  };
+
   return (
     <>
-      <style>{`
+            <style>{`
         body {
             font-family: "Poppins-ExtraBold", Helvetica;;
             margin: 0;
@@ -193,20 +226,41 @@ const LogIn = () => {
           border: white;
         }
       `}</style>
-      
+
       <div className="container">
         <div className="image-container2">
-            <img src="11.png" alt="logo" />
+          <img src="11.png" alt="logo" />
         </div>
         <div className="login-form">
           <p className="txt3">Welcome back!</p>
           <p className="txt4"> Enter your credentials to access your account.</p>
-          <form>
+
+          {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display error message */}
+
+          <form onSubmit={handleSubmit}>
             <label htmlFor="email" className="txt5">Email address</label>
-            <input className="email" type="email" id="email" name="email" required placeholder="Enter your Email"/>
+            <input
+              className="email"
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder="Enter your Email"
+            />
 
             <label htmlFor="password" className="txt6">Password</label>
-            <input className="password" type="password" id="password" name="password" required placeholder="Password"/>
+            <input
+              className="password"
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              placeholder="Password"
+            />
 
             <div className="options">
               <label>
@@ -219,22 +273,20 @@ const LogIn = () => {
             <p className="txt1">or</p>
             <div className="button-container">
               <div>
-                  <button type="submit" className="btn1">
+                <button type="button" className="btn1">
                   <img src="google.png" alt="Icon 1" className="icon"/>&nbsp;&nbsp;
                   <span className="btn-text">Login with Google</span>
-                  </button>
+                </button>
               </div>
               <div>
-                  <button type="submit" className="btn2">
+                <button type="button" className="btn2">
                   <img src="apple2.png" alt="Icon 1" className="icon"/>&nbsp;&nbsp;
                   <span className="btn-text">Login with Apple</span>
-                  </button>
-
+                </button>
               </div>
             </div>
             <p className="txt2">Don't have an account? <a href="#">Sign up now</a></p>
           </form>
-          
         </div>
         <div className="image-section">
           <div className="image-container">

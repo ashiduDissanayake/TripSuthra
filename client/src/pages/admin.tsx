@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from "../layouts/layout";
 import PersonalDetailsForm from '@/components/personalDetails';
+import VisaApplicationForm from '@/components/applyForVisa';
 
 const Admin = () => {
   return (

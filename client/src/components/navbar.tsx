@@ -1,5 +1,6 @@
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
+import { useNavigate } from "react-router-dom";
 import {
   Navbar as NextUINavbar,
   NavbarBrand,
@@ -7,29 +8,28 @@ import {
   NavbarItem,
 } from "@nextui-org/navbar";
 import clsx from "clsx";
-
-import { siteConfig } from "@/config/site";
 import img1 from "@/assets/11.png";
+import { siteConfig } from "@/config/site"; // Ensure siteConfig is correctly defined
+import img from "../../public/male1.jpg"
+
+
+
 
 export const Navbar = ({ user }) => {
+  const navigate = useNavigate();
+
+
   return (
-    <NextUINavbar
-      maxWidth="xl"
-      position="sticky"
-      className="flex justify-space-between"
-    >
+    <NextUINavbar maxWidth="xl" position="sticky" className="flex justify-space-between">
       {/* Logo Section */}
       <NavbarContent className="flex justify-start">
         <NavbarBrand className="gap-3 max-w-fit">
-          <Link
-            className="flex justify-start items-center gap-1"
-            color="foreground"
-            href="/"
-          >
+          <Link className="flex justify-start items-center gap-1" color="foreground" href="/">
             <img src={img1} alt="TripSuthra" className="w-16" />
           </Link>
         </NavbarBrand>
       </NavbarContent>
+
       {/* Middle Section (Navigation Items) */}
       <NavbarContent className="flex justify-start">
         {siteConfig.navItems.slice(0, 4).map((item) => (
@@ -48,18 +48,22 @@ export const Navbar = ({ user }) => {
           </NavbarItem>
         ))}
       </NavbarContent>
+
       {/* End Section (Avatar or Login & Signup) */}
       {user ? (
-        <NavbarContent className="flex justify-end items-center">
+        <NavbarContent className="flex justify-end items-center" data-justify="end">
           <NavbarItem>
+          
             <img
-              src={user.avatarUrl}
+              src={img}
               alt="User Avatar"
               className="w-8 h-8 rounded-full cursor-pointer"
               onClick={() => {
-                // Handle avatar click, e.g., toggle a dropdown menu
+                // Handle avatar click
+                navigate("/user");
               }}
             />
+
           </NavbarItem>
         </NavbarContent>
       ) : (

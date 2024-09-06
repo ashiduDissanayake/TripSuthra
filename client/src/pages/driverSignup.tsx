@@ -44,7 +44,7 @@ const SignupDriver = () => {
           background-size: cover;
           background-position: center;
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
           align-items: center;
         }
         .right-section {
@@ -159,6 +159,7 @@ const SignupDriver = () => {
       </div>
     </>
   );
-};
+}
+
 
 export default SignupDriver;

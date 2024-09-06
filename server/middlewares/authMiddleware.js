@@ -1,22 +1,23 @@
-const jwt = require('jsonwebtoken');
-const JWT_SECRET = 'MrASH12345';
+const JWT = require('jsonwebtoken');
 
-// Verify JWT token and role
-const verifyToken = (roles = []) => (req, res, next) => {
-  const token = req.headers['authorization'];
-  if (!token) return res.status(403).json({ error: 'No token provided' });
-
-  jwt.verify(token.split(' ')[1], JWT_SECRET, (err, decoded) => {
-    if (err) return res.status(500).json({ error: 'Failed to authenticate token' });
-
-    req.user = decoded;
-
-    if (roles.length && !roles.includes(decoded.role)) {
-      return res.status(403).json({ error: 'Forbidden: You do not have the required role' });
+module.exports = async (req, res, next) => {
+  try {
+    const authHeader = req.headers['authorization'];
+    if (!authHeader) {
+      return res.status(401).send({ message: 'Auth Failed: No token provided', success: false });
     }
 
-    next();
-  });
-};
+    const token = authHeader.split(' ')[1];
+    JWT.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      if (err) {
+        return res.status(401).send({ message: 'Auth Failed: Invalid token', success: false });
+      }
 
-module.exports = verifyToken;
+      req.body.userId = decoded.id;
+      next();
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: 'Internal Server Error', success: false });
+  }
+};

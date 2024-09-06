@@ -1,9 +1,10 @@
-import React, { useRef, useState, MouseEvent } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { CSSProperties } from "react";
+import axios from "axios";
 import EventDetailModal from "./EventDetailModal"; // Adjust the import path as necessary
 
-// Define the type for the event data
 interface EventData {
+  id: number;
   title: string;
   date: string;
   location: string;
@@ -14,7 +15,6 @@ interface EventData {
   rating: number;
 }
 
-// Styles for the section and title
 const sectionStyles: CSSProperties = {
   padding: "40px 20px",
   backgroundColor: "#1e1e2f",
@@ -30,7 +30,6 @@ const titleStyles: CSSProperties = {
   color: "#ffc107",
 };
 
-// Grid container styles for better layout control
 const gridContainerStyles: CSSProperties = {
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
@@ -130,57 +129,33 @@ const buttonHoverStyles: CSSProperties = {
   transform: "translateX(-50%) scale(1.1)",
 };
 
-// Trending Events component
 const TrendingEvents: React.FC = () => {
-  const eventsData: EventData[] = [
-    {
-      title: "Esala Perahera",
-      date: "August 12, 2024",
-      location: "Kandy",
-      imageUrl: "/public/esala.jpg",
-      reviews: 480,
-      distance: "187 Kilometers away",
-      description:
-        "Esala Perahera is an annual Buddhist festival held in Kandy, Sri Lanka, to honor the sacred tooth relic of Lord Buddha. It is one of the most colorful and significant religious events in the country, featuring a grand procession with beautifully adorned elephants, traditional dancers, drummers, and fire performers. The highlight of the festival is the majestic elephant carrying a replica of the sacred tooth relic through the streets. The event usually lasts for ten days in July or August, symbolizing devotion and showcasing Sri Lankan culture and heritage.",
-      rating: 4.5,
-    },
-    {
-      title: "Nallur Festival",
-      date: "October 5, 2024",
-      location: "Galle",
-      imageUrl: "/public/nallur.jpg",
-      reviews: 320,
-      distance: "90 Kilometers away",
-      description:
-        "The Nallur Festival, held annually in Jaffna, Sri Lanka, is a vibrant and significant Hindu celebration dedicated to Lord Murugan, a popular deity in Tamil culture. This festival, also known as the Nallur Kandaswamy Kovil Festival, typically takes place over 25 days in August or September. It features a blend of religious rituals, cultural performances, and colorful processions.Devotees participate in various ceremonies, including elaborate processions with decorated chariots, traditional music, and dance. The festival's highlight is the grand procession of the deity's chariot through the streets, accompanied by enthusiastic devotees, who often undertake vows and penances as part of their devotion. The Nallur Festival is a time of community bonding, showcasing Tamil cultural heritage and religious fervor.",
-      rating: 3.0,
-    },
-    {
-      title: "Madhu Festival",
-      date: "August 12, 2024",
-      location: "Kandy",
-      imageUrl: "/public/madhu.jfif",
-      reviews: 480,
-      distance: "187 Kilometers away",
-      description: "A vibrant Hindu festival in Galle.",
-      rating: 4.0,
-    },
-    {
-      title: "Arugam Bay Surfing",
-      date: "October 5, 2024",
-      location: "Galle",
-      imageUrl: "/public/arugambay.jfif",
-      reviews: 320,
-      distance: "90 Kilometers away",
-      description: "A vibrant Hindu festival in Galle.",
-      rating: 4.0,
-    },
-  ];
-
+  const [eventsData, setEventsData] = useState<EventData[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [favoriteIndexes, setFavoriteIndexes] = useState<number[]>([]);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3000/api/v1/event/trending-events"
+        );
+
+        // Check if response.data has the correct structure
+        if (response.data && Array.isArray(response.data.data)) {
+          setEventsData(response.data.data); // Access the 'data' field which contains the array
+        } else {
+          console.error("Invalid data format:", response.data); // Log if the format is wrong
+        }
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   const openModal = (event: EventData) => {
     setSelectedEvent(event);
@@ -241,7 +216,7 @@ const TrendingEvents: React.FC = () => {
                   favoriteIndexes.includes(index) || hoveredIndex === index
                     ? "block"
                     : "none",
-                color: favoriteIndexes.includes(index) ? "#ff5733" : "#ffffff", // Red if favorite
+                color: favoriteIndexes.includes(index) ? "#ff5733" : "#ffffff",
               }}
               onClick={() => toggleFavorite(index)}
               onMouseEnter={(e) =>

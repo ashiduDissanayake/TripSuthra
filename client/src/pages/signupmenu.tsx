@@ -36,7 +36,6 @@ const SignupMenuModified = () => {
             backgroundColor: 'rgba(0, 0, 0, 0.3)', // Slight darkening of background image
           }}
         ></div>
-
         {/* Signup as Text */}
         <div
           style={{
