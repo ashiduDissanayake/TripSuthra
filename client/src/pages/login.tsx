@@ -40,7 +40,7 @@ const LogIn = () => {
         body {
             font-family: "Poppins-ExtraBold", Helvetica;;
             margin: 0;
-            padding: 0;
+            padding-left: 20px;
             display: flex;
             justify-content: end;
             align-items: center;
@@ -85,8 +85,9 @@ const LogIn = () => {
 
         .container {
             display: flex;
-            width: 100vw; /* Ensure full viewport width */
-            height: 100vh; /* Ensure full viewport height */
+  justify-content: center;  /* Center horizontally */
+  align-items: center;      /* Center vertically */
+  height: 100vh;
         }
 
         .login-form {
@@ -228,10 +229,11 @@ const LogIn = () => {
       `}</style>
 
       <div className="container">
-        <div className="image-container2">
-          <img src="11.png" alt="logo" />
-        </div>
+        
         <div className="login-form">
+          <div className="image-container2">
+            <img src="11.png" alt="logo" />
+          </div>
           <p className="txt3">Welcome back!</p>
           <p className="txt4"> Enter your credentials to access your account.</p>
 

@@ -48,6 +48,7 @@ function App() {
       <Route element={<DriverSignup />} path="/signup/driver" />
       <Route element={<GuideSignup />} path="/signup/guide" />
       <Route element={<TravelerSignup />} path="/signup/travelersign" />
+      <Route element={<LogIn />} path="/loginl" />
 
       <Route element={<UserPage />} path="/test" />
       
