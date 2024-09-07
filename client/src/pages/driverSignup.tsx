@@ -1,165 +1,265 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const SignupDriver = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    license: '',
-    eligible: false,
-  });
+const DriverSignUp = () => {
+  const navigate = useNavigate(); // useNavigate hook from react-router-dom
 
-  const handleChange = (e: { target: { name: any; value: any; type: any; checked: any; }; }) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
-  };
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent default form submission
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    console.log(formData); // Process form data
+    // Navigate to another page after validation
+    navigate('/drivesignup2');
   };
 
   return (
     <>
       <style>{`
-        .signup-container {
-          display: flex;
-          height: 100vh;
-          font-family: 'Poppins', sans-serif;
-          position: relative;
+        body {
+            font-family: "Poppins-ExtraBold", Helvetica;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            background-color: #fff;
+            overflow: hidden;
         }
-        .logo {
-          position: absolute;
-          top: 20px;
-          left: 20px;
+
+        .btn2{
+          float:right;
         }
-        .logo img {
-          height: 70px;
+
+        .btn1, .btn2 {
+          margin-top: 4px;
+          display: inline-flex;
+          align-items: center;
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          background-color: #fff;
+          color: black;
+          border-radius: 30px;
+          border: 0.5px solid black;
         }
-        .left-section {
-          flex: 1;
-          background-image: url('/public/dsignup.jpg'); /* Replace with your background image URL */
-          background-size: cover;
-          background-position: center;
+
+        .icon{
+          width:15px;
+          height:15px;
+        }
+
+        .button-container {
+            display: inline-flex;
+            gap: 10px; 
+            justify-content: space-between;
+        }
+
+        .image-container2{
+          width:120px;
+          height:120px;
+        }
+
+        .container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .login-form {
+            padding: 20px;
+            padding-top:80px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .image-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-top-left-radius: 45px;
+            border-bottom-left-radius: 45px;
+        }
+
+        .txt1,.txt2{
+          text-align:center;
+        }
+
+        h1, h2 {
+            margin: 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            padding-right:100px;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid rgba(50, 125, 129, 0.30);
+            border-radius: 5px;
+        }
+
+        .options-container {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          margin-top: 10px;
         }
-        .right-section {
-          flex: 1;
-          background-color: #E0F7FA;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-        }
-        .form-box {
-          background-color: #ffffff;
-          padding: 40px;
-          border-radius: 10px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          width: 300px;
-        }
-        .form-box label {
+
+        .terms-label {
           font-size: 14px;
-          color: #13294B;
-          font-weight: 500;
-          display: block;
-          margin-bottom: 8px;
+          display: flex;
+          align-items: center;
         }
-        .form-box input {
-          width: 100%;
+
+        .btn0 {
+          margin-left: 20px;
           padding: 10px;
-          margin-bottom: 20px;
-          border: 1px solid #087E8B;
-          border-radius: 5px;
-        }
-        .form-box input[type="checkbox"] {
-          width: auto;
-        }
-        .form-box button {
-          background-color: #087E8B;
-          color: white;
+          color: #fff;
           border: none;
-          padding: 10px 20px;
+          border-radius: 30px;
           cursor: pointer;
-          border-radius: 5px;
-          width: 100%;
+          background-color: #00796b;
+          width: 100px;
+          align-self: flex-end;
         }
-        .form-box button:hover {
-          background-color: #065C67;
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
         }
-        .heading {
-          font-size: 24px;
-          color: #13294B;
-          font-weight: 600;
-          margin-bottom: 20px;
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .txt3{
+          color: #000;
+          font-family:  "Poppins-ExtraBold", Helvetica;
+          font-size: 30px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          padding:0 0 10px 0;
+        }
+
+        .txt5, .txt6{
+          padding:0 0 0px 0;
+        }
+
+        .txt1{
+          padding:10px 0 0 0;
+        }
+
+        .txt2{
+          padding:20px 0 0 0;
+        }
+
+        .txt5,.txt6{
+          color: #000;
+          font-family:  "Poppins-ExtraBold", Helvetica;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+        }
+
+        .txt7{
+          background-color: #3A5B22;
+          align-items:center
+        }
+
+        .name,.license,.address,.mobile{
+          outline: none;
+          border-radius: 20px;
+        }
+
+        .error {
+            color: red;
+            margin-top: 5px;
         }
       `}</style>
 
-      <div className="signup-container">
-        {/* Logo Positioned on Top Left */}
-        <div className="logo">
-          <img src="/public/11.png" alt="Logo" />
+      <div className="container">
+        <div className="image-container2">
+            <img src="/public/11.png" alt="logo" />
         </div>
+        <div className="login-form">
+          <p className="txt3">Sign Up as Driver</p>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name" className="txt5">Name</label>
+            <input className="name" type="text" id="name" name="name" required placeholder="Enter the name"/>
 
-        {/* Left Section with Background Image */}
-        <div className="left-section"></div>
+            <label htmlFor="license" className="txt6">License Number</label>
+            <input className="license" type="text" id="license" name="license" required placeholder="Enter license number"/>
 
-        {/* Right Section with Heading and Form */}
-        <div className="right-section">
-          <div className="heading">Sign up as Driver</div>
-          <form className="form-box" onSubmit={handleSubmit}>
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Enter your name"
-            />
+            <label htmlFor="address" className="txt6">Address</label>
+            <input className="address" type="text" id="address" name="address" required placeholder="Enter address"/>
 
-            <label htmlFor="email">Email address</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-            />
+            <label htmlFor="mobile" className="txt6">Mobile Number</label>
+            <input className="mobile" type="text" id="mobile" name="mobile" required placeholder="Enter mobile number"/>
 
-            <label htmlFor="license">Driver License</label>
-            <input
-              type="text"
-              id="license"
-              name="license"
-              value={formData.license}
-              onChange={handleChange}
-              placeholder="Enter driver license number"
-            />
+            <div className="options-container">
+              <label className="terms-label">
+                <input type="checkbox" name="eligible" /> I am eligible to sign up as a driver
+              </label>
 
-            <label htmlFor="eligible">
-              <input
-                type="checkbox"
-                id="eligible"
-                name="eligible"
-                checked={formData.eligible}
-                onChange={handleChange}
-              />
-              I am eligible to drive
-            </label>
+              <button type="submit" className="btn0">Next</button>
+            </div>
 
-            <button type="submit">Sign up </button>
+            <p className="txt1">or</p>
+            <div className="button-container">
+              <div>
+                  <button type="submit" className="btn1">
+                  <img src="/public/google.png" alt="Icon 1" className="icon"/>&nbsp;&nbsp;
+                  <span className="btn-text">Sign in with Google</span>
+                  </button>
+              </div>
+              <div>
+                  <button type="submit" className="btn2">
+                  <img src="/public/apple2.png" alt="Icon 1" className="icon"/>&nbsp;&nbsp;
+                  <span className="btn-text">Sign in with Apple</span>
+                  </button>
+              </div>
+            </div>
+            <p className="txt2">Have an account? <a href="#">log in</a></p>
           </form>
+        </div>
+        <div className="image-section">
+          <div className="image-container">
+            <img src="/public/Driver.jpg" alt="Driver Scene" />
+          </div>
         </div>
       </div>
     </>
   );
 }
 
+export default DriverSignUp;
 
-export default SignupDriver;
+
+
+

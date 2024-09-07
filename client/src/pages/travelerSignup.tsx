@@ -1,111 +1,15 @@
 
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const TravelerSignup = () => {
+const TravelerSignUp = () => {
+  const navigate = useNavigate(); // useNavigate hook from react-router-dom
 
-  // Rest of the code...
-  const styles = {
-    container: {
-      display: 'flex',
-      height: '100vh',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      fontFamily: `'Poppins', sans-serif`,
-      backgroundColor: '#F4F6EF',
-      margin: 0,
-    },
-    signupSection: {
-      flex: 1,
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      padding: '40px',
-      backgroundColor: '#ffffff',
-    },
-    formContainer: {
-      maxWidth: '400px',
-      margin: 'auto',
-    },
-    title: {
-      fontFamily: `'Montserrat', sans-serif`,
-      fontSize: '36px',
-      color: '#13294B',
-      marginBottom: '20px',
-    },
-    formLabel: {
-      display: 'block',
-      marginBottom: '5px',
-      color: '#13294B',
-    },
-    inputField: {
-      width: '100%',
-      padding: '10px',
-      marginBottom: '15px',
-      border: '1px solid #13294B',
-      borderRadius: '5px',
-      fontSize: '16px',
-    },
-    checkboxContainer: {
-      display: 'flex',
-      alignItems: 'center',
-      marginBottom: '20px',
-    },
-    submitBtn: {
-      backgroundColor: '#087E8B',
-      color: '#ffffff',
-      padding: '10px 20px',
-      border: 'none',
-      borderRadius: '5px',
-      fontSize: '18px',
-      cursor: 'pointer',
-      width: '100%',
-      transition: 'background-color 0.3s ease',
-    },
-    altSignup: {
-      textAlign: 'center',
-      marginTop: '20px',
-    },
-    altSignupText: {
-      color: '#13294B',
-    },
-    altBtn: {
-      backgroundColor: '#ffffff',
-      color: '#13294B',
-      border: '1px solid #13294B',
-      padding: '10px 20px',
-      borderRadius: '5px',
-      fontSize: '16px',
-      margin: '5px',
-      cursor: 'pointer',
-      width: '48%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    loginLink: {
-      textAlign: 'center',
-      marginTop: '20px',
-    },
-    loginLinkText: {
-      color: '#087E8B',
-      textDecoration: 'none',
-      fontWeight: 'bold',
-    },
-    imageSection: {
-      flex: 1,
-      backgroundColor: '#13294B',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    signupImage: {
-      maxWidth: '100%',
-      height: 'auto',
-      borderRadius: '10px',
-    },
-    logoImg: {
-      width: '20px',
-      marginRight: '10px',
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    // Navigate to another page after validation
+    navigate('/signup2');
   };
 
   
@@ -356,8 +260,5 @@ const TravelerSignup = () => {
       </div>
     </>
   );
-};
-
-export default TravelerSignup;
-
-
+}
+export default TravelerSignUp;
